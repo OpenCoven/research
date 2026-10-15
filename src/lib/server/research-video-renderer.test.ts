@@ -199,7 +199,12 @@ test("abort sends SIGTERM, escalates to SIGKILL, and rejects as AbortError", asy
     cwd: temporary,
     signal: controller.signal,
     killGraceMs: 5,
-    spawnProcess: () => child,
+    spawnProcess: (command, args, options) => {
+      assert.equal(command, "ffmpeg");
+      assert.deepEqual(args, ["-version"]);
+      assert.equal(options.windowsHide, true, "video subprocesses must not open a Windows console");
+      return child;
+    },
   });
   controller.abort();
   await assert.rejects(
@@ -228,7 +233,12 @@ test("an unresponsive ffprobe force-settles after TERM and KILL", async () => {
     signal: controller.signal,
     killGraceMs: 2,
     forceSettleMs: 2,
-    spawnProcess: () => child,
+    spawnProcess: (command, args, options) => {
+      assert.equal(command, "ffprobe");
+      assert.deepEqual(args, ["output.mp4"]);
+      assert.equal(options.windowsHide, true, "probe subprocesses must not open a Windows console");
+      return child;
+    },
   });
   controller.abort();
   await assert.rejects(
