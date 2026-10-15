@@ -45,10 +45,10 @@ pnpm test:components
 pnpm typecheck:host
 ```
 
-The extraction passes 1,452 Node tests and 182 component tests against the clean,
+The extraction passes 1,453 Node tests and 182 component tests against the clean,
 published Cave host-contract commit pinned in `contracts/host-fixture.json`.
-That pin is shared by all runners and CI. The host-contract PR must land before
-release; see [Cave PR #6006](https://github.com/OpenCoven/coven-cave/pull/6006).
+That pin is shared by all runners and CI. The host-contract prerequisite landed in
+[Cave PR #6006](https://github.com/OpenCoven/coven-cave/pull/6006).
 Research protocol schemas and their fixtures live in this repository.
 
 `pnpm typecheck:host` validates production source against these named adapters.
@@ -59,7 +59,8 @@ share the host's Next and React instances.
 ## Remaining integration
 
 - Finalize explicit typed host exports and version their compatibility contract.
-- Move indexing implementation out of the retained offline maintenance closure.
+- Preserve core SQLite storage for offline restore/deletion; optional ingestion,
+  embedding and retrieval implementations live in this package.
 - Land the host adapters and optional activation integration, including the absent-package build fallback.
 - Run the complete package tests and Cave's absent/disabled/enabled matrix.
 - Publish a pinned release, remove the replaced Cave source, and measure results.
