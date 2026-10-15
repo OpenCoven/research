@@ -1,0 +1,58 @@
+{
+  "name": "@opencoven/research",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Optional Research subsystem for Coven Cave",
+  "license": "MIT OR AGPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenCoven/research.git"
+  },
+  "engines": {
+    "node": ">=24.18.0 <25"
+  },
+  "files": [
+    "dist",
+    "src",
+    "contracts",
+    "LICENSE*"
+  ],
+  "exports": {
+    "./client": {
+      "types": "./src/components/role-surfaces/researcher-surface.tsx",
+      "default": "./dist/components/role-surfaces/researcher-surface.js"
+    },
+    "./server": {
+      "types": "./src/server.ts",
+      "default": "./dist/server.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "node scripts/generate-route-registry.mjs && node scripts/build.mjs",
+    "check": "node scripts/check-boundary.mjs",
+    "test:node": "node scripts/test-node.mjs",
+    "typecheck:host": "node scripts/typecheck-host-fixture.mjs",
+    "test:components": "vitest run"
+  },
+  "peerDependencies": {
+    "next": "16.3.8",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "dependencies": {
+    "pdfjs-dist": "6.2.108",
+    "sharp": "0.35.5"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.2",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "esbuild": "0.28.1",
+    "react-test-renderer": "19.2.8",
+    "typebox": "1.3.8",
+    "typescript": "6.0.3",
+    "vitest": "4.1.11"
+  }
+}
