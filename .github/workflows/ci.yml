@@ -1,0 +1,50 @@
+name: Research checks
+on:
+  workflow_call:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Resolve immutable host fixture
+        id: host
+        run: echo "revision=$(node -p 'require("./contracts/host-fixture.json").revision')" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        with:
+          repository: OpenCoven/coven-cave
+          ref: ${{ steps.host.outputs.revision }}
+          path: .host/cave
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.34.5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.18.1
+          cache: pnpm
+      - name: Install host and package dependencies
+        run: |
+          pnpm --dir .host/cave install --frozen-lockfile --ignore-scripts
+          pnpm install --frozen-lockfile --ignore-scripts
+      - name: Install media test dependencies
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Verify package and host contract
+        env:
+          COVEN_RESEARCH_HOST_FIXTURE: ${{ github.workspace }}/.host/cave
+        run: |
+          pnpm build
+          pnpm check
+          pnpm typecheck:host
+          pnpm test:node
+          pnpm test:components
+          pnpm pack --pack-destination /tmp/research-package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: research-package
+          path: /tmp/research-package/*.tgz
+          if-no-files-found: error

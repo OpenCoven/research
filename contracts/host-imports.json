@@ -1,0 +1,5002 @@
+{
+  "version": 1,
+  "modules": {
+    "lib/server/api-security": {
+      "source": "src/lib/server/api-security.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/autoloop/document/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/autoloop/stream/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/context-packs/[id]/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/context-packs/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/generations/cancel/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/generations/infographic/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/generations/media-ticket/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/generations/media/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/generations/readiness/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/generations/render/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/generations/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/github-repo/file/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/github-repo/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/links/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/[id]/actions/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/[id]/files/[key]/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/[id]/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/[id]/schedule/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/papers/pdf/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/recommendations/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/resources/[id]/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/resources/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/resources/search/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/topic-jobs/[id]/cancel/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/topic-jobs/[id]/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/topic-jobs/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/topic-proposals/[id]/accept/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/topic-proposals/[id]/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/topic-proposals/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway-route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "rejectNonLocalRequest": "value",
+        "readJsonBody": "value",
+        "rejectResearchMediaRequest": "value",
+        "rejectResearchRunStreamRequest": "value"
+      }
+    },
+    "lib/feature-flags": {
+      "source": "src/lib/feature-flags.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/context-packs/[id]/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/context-packs/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/resources/[id]/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/resources/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/resources/search/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/topic-jobs/[id]/cancel/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/topic-jobs/[id]/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/topic-jobs/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/topic-proposals/[id]/accept/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/topic-proposals/[id]/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/topic-proposals/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-desk.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-resources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-semantic.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-desk.behavior.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "caveResearchContextPacks": "value",
+        "caveResearchResources": "value",
+        "caveResearchTopicDiscovery": "value",
+        "caveResearchRemoteContent": "value",
+        "caveResearchSemantic": "value"
+      }
+    },
+    "lib/research-protocol/context-pack": {
+      "source": "src/lib/research-protocol/context-pack.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/context-packs/[id]/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-topic-discovery.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-context-pack-client.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/index.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/index.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/research-run.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/topic-discovery.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-resource-browser.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-topic-discovery.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-context-pack-builder.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-context-resource-adapters.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/index.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/research-run.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "parseContextPackV1": "value",
+        "ContextPackV1": "type",
+        "parseContextSelectorV1": "value",
+        "ContextSelectorV1": "type",
+        "ContextPackResourceV1": "type"
+      }
+    },
+    "lib/server/research-context-pack-store": {
+      "source": "src/lib/server/research-context-pack-store.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/context-packs/[id]/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/context-packs/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/topic-jobs/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-context-pack-builder.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-topic-discovery-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/topic-jobs/route.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-context-pack-builder.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-topic-discovery-runner.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "ContextPackStoreError": "value",
+        "createContextPackStore": "value",
+        "ContextPackStore": "type",
+        "VerifiedContextPack": "type"
+      }
+    },
+    "lib/research-generations": {
+      "source": "src/lib/research-generations.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/generations/cancel/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/generations/infographic/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/generations/media-ticket/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/generations/media/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/generations/render/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/generations/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-modals.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-providers.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-studio.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-generations.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-infographic-renderer.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-long-video-pipeline.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-media-job-contract.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-media-job-factory.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-media-jobs.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-media-readiness.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-media-store.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-podcast-pipeline.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-short-video-pipeline.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-video-renderer.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-providers.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-studio.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-blog-directions.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-generations.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-infographic-renderer.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-long-video-pipeline.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-media-job-factory.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-media-jobs.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-podcast-pipeline.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-short-video-pipeline.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-video-renderer.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-media-lifecycle.integration.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-lifecycle.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "isValidResearchGenerationFamiliarId": "value",
+        "ResearchGenerationMediaFileRef": "type",
+        "isResearchGenerationMediaKind": "value",
+        "validateCreateResearchGenerationInput": "value",
+        "RESEARCH_GENERATION_DIRECTIONS_MAX_LENGTH": "value",
+        "RESEARCH_GENERATION_MEDIA_KINDS": "value",
+        "RESEARCH_THREAD_POST_MAX_CHARS": "value",
+        "isResearchGenerationKind": "value",
+        "ResearchGeneration": "type",
+        "ResearchGenerationCreatableKind": "type",
+        "ResearchGenerationKind": "type",
+        "ResearchGenerationMediaKind": "type",
+        "ResearchGenerationReadiness": "type",
+        "ResearchMediaLength": "type",
+        "ResearchMediaProvider": "type",
+        "ResearchPodcastStyle": "type",
+        "RESEARCH_GENERATION_CREATABLE_KINDS": "value",
+        "cancelResearchGeneration": "value",
+        "createResearchGeneration": "value",
+        "elevenLabsPodcastDirection": "value",
+        "getResearchGenerationReadiness": "value",
+        "listResearchGenerations": "value",
+        "renderResearchGeneration": "value",
+        "removeResearchGeneration": "value",
+        "isResearchGenerationContent": "value",
+        "isResearchGenerationCreatableKind": "value",
+        "isResearchGenerationProgress": "value",
+        "isResearchGenerationStage": "value",
+        "isResearchGenerationStatusForKind": "value",
+        "RESEARCH_MEDIA_LENGTH_LIMITS": "value",
+        "validateResearchMediaRenderConfig": "value",
+        "CreateResearchGenerationInput": "type",
+        "ResearchGenerationContent": "type",
+        "ResearchGenerationProgress": "type",
+        "ResearchGenerationScriptSegment": "type",
+        "ResearchGenerationStatus": "type",
+        "ResearchGenerationStage": "type",
+        "ResearchGenerationSlide": "type",
+        "ResearchGenerationStat": "type",
+        "ResearchGenerationStoryboardScene": "type",
+        "ResearchGenerationThreadPost": "type",
+        "ResearchGenerationVideoChapter": "type",
+        "ResearchMediaRenderConfig": "type",
+        "ResearchPodcastSpeaker": "type",
+        "ResearchMediaReadiness": "type",
+        "ResearchMediaReadyVoice": "type",
+        "RESEARCH_GENERATION_KINDS": "value",
+        "RESEARCH_GENERATION_STATUSES": "value"
+      }
+    },
+    "lib/research-media-ticket": {
+      "source": "src/lib/research-media-ticket.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/generations/media-ticket/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-media-client.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "RESEARCH_MEDIA_PATH": "value",
+        "RESEARCH_MEDIA_TICKET_PARAM": "value",
+        "signResearchMediaTicket": "value"
+      }
+    },
+    "lib/github-token": {
+      "source": "src/lib/github-token.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/github-repo/file/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/github-repo/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/links/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "resolveGitHubToken": "value",
+        "resolveGitHubTokenForRead": "value"
+      }
+    },
+    "lib/research-github-repo": {
+      "source": "src/lib/research-github-repo.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/github-repo/file/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/github-repo/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/links/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-github-repo-viewer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/use-research-links.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-github-repo-browser.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-github-repo.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/github-repo/route.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-github-repo-browser.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-github-repo.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "parseGithubRepoInput": "value",
+        "sanitizeGithubObjectSha": "value",
+        "sanitizeGithubRef": "value",
+        "githubRepoCandidates": "value",
+        "MAX_GITHUB_REPOSITORIES_PER_INGEST": "value",
+        "buildGithubRepoTree": "value",
+        "formatGithubBytes": "value",
+        "githubRepoFileEndpoint": "value",
+        "githubRepoFileWebUrl": "value",
+        "githubRepoReadmeLinkUrl": "value",
+        "githubRepoTreeWebUrl": "value",
+        "githubRepoWebUrl": "value",
+        "GithubRepoFileView": "type",
+        "GithubRepoSnapshot": "type",
+        "GithubRepoSummary": "type",
+        "RepoTreeNode": "type",
+        "normalizeGithubRepoSnapshot": "value",
+        "GITHUB_REPO_FILE_BYTE_CAP": "value",
+        "GithubRepoTreeEntry": "type",
+        "GITHUB_REPO_README_BYTE_CAP": "value",
+        "GITHUB_REPO_TREE_ENTRY_CAP": "value",
+        "GithubRepoReadme": "type",
+        "GithubRepoView": "type",
+        "GithubRepoVisibility": "type"
+      }
+    },
+    "lib/link-extractor": {
+      "source": "src/lib/link-extractor.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/links/ingest-urls.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "extractLinks": "value"
+      }
+    },
+    "lib/hf-papers": {
+      "source": "src/lib/hf-papers.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/links/ingest-urls.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/links/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/papers/pdf/arxiv-url.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "arxivIdFromUrl": "value",
+        "hfPaperUrl": "value",
+        "parseHfPaperReferences": "value",
+        "isArxivPaperId": "value"
+      }
+    },
+    "lib/link-organizer": {
+      "source": "src/lib/link-organizer.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/links/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/recommendations/route.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-quick-saves.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-prompt.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-resources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/use-research-links.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-recommendation-context.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-topic-recommendations.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/links/route.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/recommendations/route.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-quick-saves.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-recommendation-context.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-topic-recommendations.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "savedLinkDedupeKey": "value",
+        "SavedLink": "type",
+        "LINK_CATEGORY_ORDER": "value",
+        "linkCategoryMeta": "value",
+        "LinkCategory": "type",
+        "SavedLinkSummary": "type",
+        "groupSavedLinksByUsage": "value",
+        "MAX_LINKS_PER_SAVE": "value",
+        "summarizeLinkIntake": "value",
+        "categorizeLink": "value"
+      }
+    },
+    "lib/server/hf-paper-metadata": {
+      "source": "src/lib/server/hf-paper-metadata.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/links/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "fetchHfPaperMetadata": "value"
+      }
+    },
+    "lib/server/research-links": {
+      "source": "src/lib/server/research-links.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/links/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/recommendations/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-link-materialization.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/links/route.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-link-materialization.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "getSavedLinkById": "value",
+        "listSavedLinks": "value",
+        "listSavedLinkSummaries": "value",
+        "MAX_LINKS_PER_SAVE": "value",
+        "removeSavedLink": "value",
+        "reserveXArticleCandidates": "value",
+        "saveResearchLinks": "value",
+        "toSavedLinkSummary": "value",
+        "XArticleCandidateReservation": "type",
+        "ResearchLinkEnrichment": "type"
+      }
+    },
+    "lib/server/x-article-ingest": {
+      "source": "src/lib/server/x-article-ingest.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/links/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/links/route.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "assertXArticleIngestCap": "value",
+        "XArticleIngestCapError": "value",
+        "enrichXArticleUrls": "value",
+        "XArticleBatchResult": "type"
+      }
+    },
+    "lib/x-articles": {
+      "source": "src/lib/x-articles.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/links/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/research-x-article-reader.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-resources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/use-research-links.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/links/route.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "parseXArticleCandidateUrl": "value",
+        "XArticleSnapshot": "type",
+        "MAX_X_ARTICLES_PER_INGEST": "value",
+        "XArticleIngestFailure": "type",
+        "isValidXArticleAuthorDisplayName": "value",
+        "isValidXArticleAuthorId": "value",
+        "isValidXArticleContentSha256": "value",
+        "isValidXArticleSourcePostId": "value",
+        "isValidXArticleUsername": "value",
+        "normalizeXArticleCoverImageUrl": "value",
+        "normalizeXArticleTimestamp": "value",
+        "NormalizedXArticle": "type"
+      }
+    },
+    "lib/research-missions": {
+      "source": "src/lib/research-missions.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/missions/[id]/actions/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/[id]/files/[key]/route.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/route.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/recommendations/route.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-artifact-actions.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-desk-view.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-evidence-inspector.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-evidence-ledger.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-library-view.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-composer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-detail.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-list.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-reader.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-modals.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-library.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-prompt.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-resources.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-x-sources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/researcher-surface.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/use-research-missions.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/use-research-run-gateway.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-artifact-contract.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-artifact-contract.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-findings-doc.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-findings-integrity.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-prompt-brief.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-recommendation-context.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-refine-direction.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-run-lifecycle.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-run-projections.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-topic-recommendations.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-generations.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-link-materialization.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-lifecycle.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-lifecycle.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway-route.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-topic-discovery-runner.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/[id]/actions/route.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/[id]/actions/route.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/[id]/files/[key]/route.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/recommendations/route.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-desk-view.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-library-view.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-artifact-contract.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-findings-doc.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-findings-integrity.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-prompt-brief.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-recommendation-context.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-recommendation-context.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-refine-direction.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-run-lifecycle.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-run-projections.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-topic-recommendations.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-generations.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-link-materialization.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-media-job-factory.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-lifecycle.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway-store.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-media-lifecycle.integration.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner-automation-scheduling.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner-concurrency-terminal.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner-lifecycle-actions.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner-reconciliation-evidence.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-mission-x-hydration.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-flow-attention.integration.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-evidence-components.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-run-projection-surface.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "allowedResearchActions": "value",
+        "RESEARCH_DIRECTION_MAX_LENGTH": "value",
+        "ResearchMissionActionInput": "type",
+        "ResearchMissionStatus": "type",
+        "ResearchSourceLedgerSnapshot": "type",
+        "ResearchSourceRef": "type",
+        "CreateResearchMissionInput": "type",
+        "validateCreateResearchMissionInput": "value",
+        "ResearchMission": "type",
+        "ResearchArtifactKind": "type",
+        "ResearchArtifactRef": "type",
+        "researchSourceStatusCounts": "value",
+        "RESEARCH_BOUND_LIMITS": "value",
+        "RESEARCH_INTENT_MAX_LENGTH": "value",
+        "RESEARCH_INTENT_MIN_LENGTH": "value",
+        "RESEARCH_MISSION_MODES": "value",
+        "RESEARCH_HARNESS_IDS": "value",
+        "RESEARCH_RUNTIME_DEFAULT_HARNESS": "value",
+        "ResearchBounds": "type",
+        "ResearchMissionMode": "type",
+        "describeResearchSchedule": "value",
+        "RESEARCH_RUN_ORIGIN_LABELS": "value",
+        "researchBoundReadings": "value",
+        "researchContinueLabel": "value",
+        "researchIntentAddsContext": "value",
+        "researchPhaseMeta": "value",
+        "researchPhaseStatuses": "value",
+        "researchDiagnosticTrace": "value",
+        "ResearchMissionAction": "type",
+        "parseResearchMission": "value",
+        "RESEARCH_ARTIFACT_KINDS": "value",
+        "ResearchSourceDraft": "type",
+        "nextResearchIterationNumber": "value",
+        "researchArtifactKindForMode": "value",
+        "RESEARCH_COST_UNAVAILABLE_STOP_REASON": "value",
+        "STANDARD_RESEARCH_ARTIFACTS": "value",
+        "RESEARCH_PROJECT_ROOT_MAX_LENGTH": "value",
+        "ResearchMissionArchiveSource": "type",
+        "ResearchAutomationLink": "type",
+        "ResearchSourcePatch": "type"
+      }
+    },
+    "lib/server/research-mission-store": {
+      "source": "src/lib/server/research-mission-store.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/missions/[id]/actions/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/[id]/files/[key]/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/[id]/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/[id]/schedule/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/recommendations/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-generations.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-landing.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-link-materialization.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway-route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway-store.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-topic-discovery-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-generations.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/lib/server/research-landing.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/lib/server/research-link-materialization.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-media-job-factory.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/lib/server/research-run-gateway.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-media-lifecycle.integration.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner-lifecycle-actions.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-mission-x-hydration.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-mission-x-hydration.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-flow-attention.integration.test.ts",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "isResearchFileIntegrityError": "value",
+        "isValidResearchMissionId": "value",
+        "loadResearchMission": "value",
+        "readValidatedMissionFile": "value",
+        "researchMissionWorkspacePath": "value",
+        "listResearchMissions": "value",
+        "researchMissionsRoot": "value",
+        "restoreResearchMissionSourceFile": "value",
+        "writeResearchMissionSourceFile": "value",
+        "RESEARCH_SESSION_OWNER_WRITE_GRANT_DIAGNOSTIC": "value",
+        "assertResearchSessionOwnerOutsideWriteRoots": "value",
+        "createResearchMissionWorkspace": "value",
+        "clearResearchMissionSessionOwner": "value",
+        "loadResearchMissionSessionOwner": "value",
+        "recordResearchMissionSessionOwner": "value",
+        "removeResearchMissionWorkspace": "value",
+        "saveResearchMission": "value",
+        "ResearchMissionSessionOwner": "type"
+      },
+      "dynamic": true
+    },
+    "lib/server/session-security": {
+      "source": "src/lib/server/session-security.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/missions/[id]/actions/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/[id]/schedule/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        }
+      ],
+      "symbols": {
+        "MAX_SESSION_JSON_BYTES": "value",
+        "normalizeProjectRoot": "value"
+      },
+      "dynamic": true
+    },
+    "lib/codex-automation-form": {
+      "source": "src/lib/codex-automation-form.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/missions/[id]/schedule/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/missions/[id]/schedule/route.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "parseCodexRrule": "value"
+      }
+    },
+    "lib/server/familiar-id": {
+      "source": "src/lib/server/familiar-id.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/missions/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/recommendations/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway-route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "isValidFamiliarId": "value"
+      }
+    },
+    "lib/server/knowledge-vault": {
+      "source": "src/lib/server/knowledge-vault.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/recommendations/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-artifact-contract.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-topic-recommendations.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/app/api/research/recommendations/route.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-topic-recommendations.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-runner-reconciliation-evidence.test.ts",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "listKnowledgeEntries": "value",
+        "selectKnowledgeForFamiliar": "value",
+        "KnowledgeEntry": "type"
+      },
+      "dynamic": true
+    },
+    "lib/agentic-diagnostics": {
+      "source": "src/lib/agentic-diagnostics.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/recommendations/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/recommendations/route.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "recordAgenticDiagnostic": "value",
+        "AgenticDiagnosticInput": "type",
+        "AgenticDiagnosticSink": "type",
+        "AgenticDiagnosticEvent": "type"
+      }
+    },
+    "lib/server/x-sources": {
+      "source": "src/lib/server/x-sources.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/recommendations/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-topic-recommendations.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/recommendations/route.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-topic-recommendations.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-x-hydration.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/app/api/research/recommendations-x-capability.test.ts",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "listSavedXSources": "value",
+        "SavedXSource": "type"
+      }
+    },
+    "lib/server/x-access": {
+      "source": "src/lib/server/x-access.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/recommendations/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "hasXCapability": "value"
+      }
+    },
+    "lib/types": {
+      "source": "src/lib/types.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/recommendations/route.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-x-sources.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-topic-recommendations.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/recommendations/route.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-topic-recommendations.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "SessionRow": "type",
+        "Familiar": "type"
+      }
+    },
+    "lib/server/sessions-list": {
+      "source": "src/lib/server/sessions-list.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/recommendations/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        }
+      ],
+      "symbols": {},
+      "dynamic": true
+    },
+    "lib/server/sessions-list-cache": {
+      "source": "src/lib/server/sessions-list-cache.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/recommendations/route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        }
+      ],
+      "symbols": {},
+      "dynamic": true
+    },
+    "lib/research-resource-contracts": {
+      "source": "src/lib/research-resource-contracts.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/resources/[id]/route.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/resources/route.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-resources.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/use-research-resources.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-resource-browser.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-resource-client.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/search-research-resource-provider.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-context-resource-adapters.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-catalog.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-extractors.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-ingestion.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-restore-lock-child.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-retrieval.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-semantic.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/resources/[id]/route.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/app/api/research/resources/route.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-resource-browser.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-resource-client.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/search-research-resource-provider.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-catalog.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-ingestion.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-retrieval.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-semantic.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "ResourceManifestV1": "type",
+        "parseResourceManifestV1": "value",
+        "parseResourceQueryResponseV1": "value",
+        "ResourceQueryResponseV1": "type",
+        "ResourceQueryHitV1": "type",
+        "ResourceNormalizationReceiptV1": "type",
+        "ResourcePageBoundaryV1": "type",
+        "ResourceIngestJobStageV1": "type",
+        "ResourceIngestJobV1": "type",
+        "ResourceSnapshotV1": "type",
+        "parseResourceQueryV1": "value",
+        "ResourceQueryV1": "type"
+      }
+    },
+    "components/ui/button": {
+      "source": "src/components/ui/button.tsx",
+      "imports": [
+        {
+          "file": "src/components/research-paper-viewer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-evidence-inspector.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-evidence-ledger.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-github-repo-viewer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-composer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-detail.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-list.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-prompt-builder.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-desk.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-library.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-resources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-topic-decision-card.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-topic-discovery.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-x-sources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/researcher-surface.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "Button": "value"
+      }
+    },
+    "lib/icon": {
+      "source": "src/lib/icon.tsx",
+      "imports": [
+        {
+          "file": "src/components/research-paper-viewer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/research-resource-browser-modal.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-artifact-actions.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-evidence-inspector.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-evidence-ledger.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-github-repo-viewer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-detail.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-list.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-desk.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-library.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-prompt.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-resources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "Icon": "value",
+        "IconName": "type"
+      }
+    },
+    "components/ui/modal": {
+      "source": "src/components/ui/modal.tsx",
+      "imports": [
+        {
+          "file": "src/components/research-resource-browser-modal.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-artifact-actions.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-detail.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-prompt-builder.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-library.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "Modal": "value"
+      }
+    },
+    "components/ui/relative-time": {
+      "source": "src/components/ui/relative-time.tsx",
+      "imports": [
+        {
+          "file": "src/components/research-x-article-reader.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-github-repo-viewer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-modals.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-resources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-studio.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-x-sources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-viewer.behavior.test.tsx",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-lifecycle.test.tsx",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-podcast-direction.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "RelativeTime": "value"
+      }
+    },
+    "components/ui/live-region": {
+      "source": "src/components/ui/live-region.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-artifact-actions.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-blog-directions.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-evidence-ledger.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-github-repo-viewer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-composer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-detail.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-reader.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-modals.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-desk.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-prompt.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-resources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-studio.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-x-sources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-github-repo-viewer.test.tsx",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-desk.behavior.test.tsx",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-viewer.behavior.test.tsx",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-lifecycle.test.tsx",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-resources.behavior.test.tsx",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-run-projection-surface.test.tsx",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-detail-origin.test.tsx",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-podcast-direction.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "useAnnouncer": "value",
+        "LiveRegionProvider": "value"
+      }
+    },
+    "lib/grimoire-link": {
+      "source": "src/lib/grimoire-link.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-artifact-actions.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-library.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "openGrimoireDoc": "value"
+      }
+    },
+    "lib/research-mission-client": {
+      "source": "src/lib/research-mission-client.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-artifact-actions.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/use-research-missions.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "getResearchMissionFile": "value",
+        "ResearchMissionFile": "type",
+        "actOnResearchMission": "value",
+        "createResearchMission": "value",
+        "isActiveResearchMission": "value",
+        "listResearchMissions": "value",
+        "runResearchAutomationNow": "value",
+        "scheduleResearchMission": "value",
+        "selectStableMission": "value",
+        "setResearchAutomationStatus": "value"
+      }
+    },
+    "components/ui/popover": {
+      "source": "src/components/ui/popover.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-blog-directions.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-reader.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "Popover": "value",
+        "PopoverItem": "value"
+      }
+    },
+    "components/ui/error-state": {
+      "source": "src/components/ui/error-state.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-evidence-inspector.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-detail.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-desk.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-x-sources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/researcher-surface.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "ErrorState": "value"
+      }
+    },
+    "lib/relative-time": {
+      "source": "src/lib/relative-time.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-evidence-ledger.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-detail.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-list.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-reader.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-library.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-prompt.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "relativeTime": "value"
+      }
+    },
+    "components/message-bubble": {
+      "source": "src/components/message-bubble.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-github-repo-viewer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-reader.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-modals.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-library.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-viewer.behavior.test.tsx",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-resources.behavior.test.tsx",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-podcast-direction.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "MarkdownBlock": "value"
+      }
+    },
+    "lib/clipboard": {
+      "source": "src/lib/clipboard.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-github-repo-viewer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-detail.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-reader.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-modals.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-resources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-viewer.behavior.test.tsx",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-podcast-direction.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "copyText": "value"
+      }
+    },
+    "lib/use-focus-trap": {
+      "source": "src/lib/use-focus-trap.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-github-repo-viewer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-reader.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-modals.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-resources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/research-resource-browser-modal.test.tsx",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-viewer.behavior.test.tsx",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-podcast-direction.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "useFocusTrap": "value",
+        "FocusTrapPortalLayersContext": "value",
+        "PortalLayerDepthContext": "value",
+        "PortalLayerRootContext": "value",
+        "usePortalLayerRootId": "value",
+        "FOCUSABLE": "value"
+      }
+    },
+    "lib/platform-keys": {
+      "source": "src/lib/platform-keys.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-github-repo-viewer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "platformizeHint": "value",
+        "useKeySymbols": "value"
+      }
+    },
+    "components/ui/select": {
+      "source": "src/components/ui/select.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-mission-composer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-modals.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-library.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-topic-discovery.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-podcast-direction.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "StandardSelect": "value",
+        "StandardSelectOption": "type"
+      }
+    },
+    "lib/chat-model-state": {
+      "source": "src/lib/chat-model-state.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-mission-composer.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "ChatModelState": "type"
+      }
+    },
+    "lib/research-mission-routing": {
+      "source": "src/lib/research-mission-routing.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-mission-composer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-prompt.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-prompt.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "defaultResearchPlan": "value",
+        "inferResearchMissionMode": "value",
+        "createResearchMissionInputFromIntent": "value"
+      }
+    },
+    "lib/use-runtime-model-options": {
+      "source": "src/lib/use-runtime-model-options.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-mission-composer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "inventoryProvenanceLabel": "value",
+        "useRuntimeModelInventory": "value"
+      }
+    },
+    "lib/use-prompt-enhance": {
+      "source": "src/lib/use-prompt-enhance.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-mission-composer.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "usePromptEnhance": "value"
+      }
+    },
+    "components/ui/skeleton": {
+      "source": "src/components/ui/skeleton.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-mission-detail.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-x-sources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/researcher-surface.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "SkeletonRows": "value",
+        "Skeleton": "value",
+        "SkeletonGroup": "value"
+      }
+    },
+    "components/ui/citation": {
+      "source": "src/components/ui/citation.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-mission-detail.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "CitationSources": "value"
+      }
+    },
+    "components/ui/clamped-text": {
+      "source": "src/components/ui/clamped-text.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-mission-detail.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "ClampedText": "value"
+      }
+    },
+    "components/ui/tabs": {
+      "source": "src/components/ui/tabs.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-mission-detail.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/researcher-surface.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "Tabs": "value",
+        "TabItem": "type"
+      }
+    },
+    "lib/citations": {
+      "source": "src/lib/citations.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-mission-detail.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "sourcesToCitations": "value"
+      }
+    },
+    "lib/flow-discussion": {
+      "source": "src/lib/flow-discussion.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-mission-detail.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-desk.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "useFlowDiscussion": "value"
+      }
+    },
+    "lib/use-minute-tick": {
+      "source": "src/lib/use-minute-tick.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-mission-detail.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-library.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "useMinuteTick": "value"
+      }
+    },
+    "components/flow-executions-dialog": {
+      "source": "src/components/flow-executions-dialog.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-mission-detail.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/components/role-surfaces/researcher-surface-link.test.tsx",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-mission-detail-origin.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {},
+      "dynamic": true
+    },
+    "lib/roving-list": {
+      "source": "src/lib/roving-list.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-mission-list.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "nextRovingId": "value",
+        "resolveRovingId": "value",
+        "RovingKey": "type"
+      }
+    },
+    "components/document-reader": {
+      "source": "src/components/document-reader.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-reader.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "DocumentReader": "value",
+        "DocumentReaderApi": "type"
+      }
+    },
+    "components/ui/overflow-menu": {
+      "source": "src/components/ui/overflow-menu.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-reader.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "OverflowMenu": "value"
+      }
+    },
+    "components/role-surfaces/podcast-transcript": {
+      "source": "src/components/role-surfaces/podcast-transcript.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-studio-modals.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-podcast-direction.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "PodcastTranscript": "value"
+      }
+    },
+    "lib/authed-image": {
+      "source": "src/lib/authed-image.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-studio-modals.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-viewer.behavior.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "useAuthedImageState": "value"
+      }
+    },
+    "lib/voice/elevenlabs-shared": {
+      "source": "src/lib/voice/elevenlabs-shared.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-studio-modals.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-studio.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-media-readiness.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-podcast-pipeline.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-media-readiness.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-podcast-pipeline.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-podcast-direction.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "ELEVENLABS_DELIVERY_PRESETS": "value",
+        "ELEVENLABS_MAX_SEED": "value",
+        "ELEVENLABS_PODCAST_MODEL_OPTIONS": "value",
+        "describeElevenLabsVoiceSettings": "value",
+        "elevenLabsDeliveryPreset": "value",
+        "isValidElevenLabsSeed": "value",
+        "ElevenLabsDeliveryPresetId": "type",
+        "DEFAULT_ELEVENLABS_VOICE_ID": "value",
+        "isValidElevenLabsVoiceId": "value",
+        "DEFAULT_ELEVENLABS_MODEL_ID": "value",
+        "DEFAULT_ELEVENLABS_PODCAST_MODEL_ID": "value",
+        "DEFAULT_ELEVENLABS_VOICE_SETTINGS": "value",
+        "modelSupportsRequestStitching": "value",
+        "ElevenLabsVoiceSettings": "type"
+      }
+    },
+    "lib/voice/settings-client": {
+      "source": "src/lib/voice/settings-client.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-studio-modals.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-studio.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "ElevenLabsCatalogState": "type",
+        "loadElevenLabsCatalog": "value"
+      }
+    },
+    "components/ui/search-input": {
+      "source": "src/components/ui/search-input.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-tab-desk.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-library.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-resources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-x-sources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "SearchInput": "value"
+      }
+    },
+    "lib/datetime-format": {
+      "source": "src/lib/datetime-format.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-tab-library.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "formatDate": "value",
+        "useDateTimePrefs": "value"
+      }
+    },
+    "components/agentic-recommendation-card": {
+      "source": "src/components/agentic-recommendation-card.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-tab-prompt.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "AgenticRecommendationCard": "value",
+        "AgenticRecommendationCardState": "type"
+      }
+    },
+    "components/ui/empty-state": {
+      "source": "src/components/ui/empty-state.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-tab-prompt.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-topic-discovery.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-x-sources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "EmptyState": "value"
+      }
+    },
+    "lib/agentic-recommendations": {
+      "source": "src/lib/agentic-recommendations.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-tab-prompt.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-topic-decision-card.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-topic-recommendations.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "parseAgenticRecommendationsOutput": "value",
+        "AgenticRecommendation": "type",
+        "AgenticEvidenceKind": "type",
+        "AgenticVerificationCheckState": "type",
+        "AGENTIC_EVIDENCE_KINDS": "value",
+        "contextFingerprint": "value",
+        "rankAgenticRecommendations": "value",
+        "AgenticEvidenceRef": "type",
+        "AgenticPayload": "type",
+        "RankedAgenticRecommendation": "type"
+      }
+    },
+    "lib/use-agentic-recommendations": {
+      "source": "src/lib/use-agentic-recommendations.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-tab-prompt.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "useAgenticRecommendations": "value"
+      }
+    },
+    "components/ui/authed-image": {
+      "source": "src/components/ui/authed-image.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-tab-resources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-viewer.behavior.test.tsx",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-podcast-direction.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "AuthedImage": "value"
+      }
+    },
+    "lib/use-pausable-poll": {
+      "source": "src/lib/use-pausable-poll.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-tab-studio.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/use-research-missions.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/research-studio-lifecycle.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "usePausablePoll": "value"
+      }
+    },
+    "lib/familiar-studio-context": {
+      "source": "src/lib/familiar-studio-context.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-x-sources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "openFamiliarStudioSettingsTab": "value"
+      }
+    },
+    "lib/x-api": {
+      "source": "src/lib/x-api.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-x-sources.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-x-hydration.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/app/api/research/recommendations-x-capability.test.ts",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "parseXPostUrl": "value",
+        "NormalizedXPost": "type",
+        "XErrorCode": "type"
+      }
+    },
+    "lib/use-surface-history": {
+      "source": "src/lib/use-surface-history.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/researcher-surface.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/researcher-surface-link.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "useTrackedSurfaceValue": "value"
+      }
+    },
+    "lib/role-surface-state": {
+      "source": "src/lib/role-surface-state.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/researcher-surface.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/researcher-surface-link.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "useRoleSurfaceState": "value"
+      }
+    },
+    "lib/role-surfaces": {
+      "source": "src/lib/role-surfaces.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/researcher-surface.tsx",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "RoleSurfaceContext": "type"
+      }
+    },
+    "components/role-surfaces/ids": {
+      "source": "src/components/role-surfaces/ids.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/researcher-surface.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "RESEARCHER_SURFACE_ID": "value"
+      }
+    },
+    "components/role-surfaces/researcher-status": {
+      "source": "src/components/role-surfaces/researcher-status.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/researcher-surface.tsx",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "researchLiveRunCount": "value"
+      }
+    },
+    "lib/research-protocol/common": {
+      "source": "src/lib/research-protocol/common.ts",
+      "imports": [
+        {
+          "file": "src/lib/research-protocol/index.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/index.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/model-task.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/option-shell.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/privacy-extension.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/research-run.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/run-manifest.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/topic-discovery.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-topic-discovery.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-model-task-executor.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway-store.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-topic-discovery-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/research-run.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "scripts/research-protocol-conformance.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/research-protocol/common.test.ts",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "copyProtocolJsonValue": "value",
+        "fail": "value",
+        "isRecord": "value",
+        "ProtocolParseResult": "type",
+        "childPath": "value",
+        "hasOwn": "value",
+        "parseObject": "value",
+        "parseRequiredField": "value",
+        "parseOpaqueIdentifier": "value",
+        "parseSha256": "value",
+        "indexPath": "value",
+        "parseEnumValue": "value",
+        "parseBoolean": "value",
+        "parseString": "value",
+        "parseSchema": "value",
+        "parsePositiveSafeInteger": "value",
+        "isUtcTimestamp": "value",
+        "pass": "value",
+        "UnknownFields": "type",
+        "parseUtc": "value",
+        "parseSafeIntegerInRange": "value",
+        "parseNonNegativeFiniteNumber": "value",
+        "compareUtcTimestamps": "value",
+        "isSha256": "value",
+        "parseResearchContextBindingV1": "value",
+        "RETENTION_ORDER": "value",
+        "retentionDoesNotExceed": "value",
+        "ResearchContextBindingV1": "type",
+        "RetentionPolicyV1": "type",
+        "utcTimestampToProtocolNanoseconds": "value",
+        "isOpaqueId": "value"
+      }
+    },
+    "lib/research-protocol/digest": {
+      "source": "src/lib/research-protocol/digest.ts",
+      "imports": [
+        {
+          "file": "src/lib/research-protocol/index.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/model-task.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/research-run.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/run-manifest.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-topic-discovery.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-context-pack-builder.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-context-resource-adapters.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-extractors.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-ingestion.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-semantic.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway-store.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/components/role-surfaces/use-research-resources.test.tsx",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/index.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/model-task.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/research-run.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/research-protocol/run-manifest.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-catalog.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-topic-discovery-runner.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "scripts/research-protocol-conformance.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/components/role-surfaces/research-tab-resources.behavior.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "canonicalJson": "value",
+        "sha256Digest": "value",
+        "digestProtocolObject": "value"
+      }
+    },
+    "lib/familiar-stream": {
+      "source": "src/lib/familiar-stream.ts",
+      "imports": [
+        {
+          "file": "src/lib/research-refine-direction.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "streamFamiliarText": "value"
+      }
+    },
+    "lib/next-paths": {
+      "source": "src/lib/next-paths.ts",
+      "imports": [
+        {
+          "file": "src/lib/research-refine-direction.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "extractNextPaths": "value"
+      }
+    },
+    "lib/secret-redaction": {
+      "source": "src/lib/secret-redaction.ts",
+      "imports": [
+        {
+          "file": "src/lib/research-topic-recommendations.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-context-resource-adapters.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "containsSecretText": "value"
+      }
+    },
+    "lib/search-document": {
+      "source": "src/lib/search-document.ts",
+      "imports": [
+        {
+          "file": "src/lib/search-research-resource-provider.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "normalizeSearchDocument": "value"
+      }
+    },
+    "lib/search-provider": {
+      "source": "src/lib/search-provider.ts",
+      "imports": [
+        {
+          "file": "src/lib/search-research-resource-provider.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "permitsByProject": "value",
+        "SearchProvider": "type",
+        "SearchRequesterContext": "type"
+      }
+    },
+    "lib/research-context-pack": {
+      "source": "src/lib/research-context-pack.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-context-pack-builder.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-context-resource-adapters.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "parseContextPackBuildReceiptV1": "value",
+        "parseContextPackPreviewV1": "value",
+        "parseContextPackRedactionMapV1": "value",
+        "parseContextPackSelectionV1": "value",
+        "ContextPackBuildReceiptV1": "type",
+        "ContextPackPreviewV1": "type",
+        "ContextPackRedactionMapV1": "type",
+        "ContextPackSelectionV1": "type",
+        "contextPackResourceId": "value",
+        "contextPackTrustForManifest": "value",
+        "RESOURCE_KIND_TO_CONTEXT_PACK_KIND": "value",
+        "ContextPackRedactionDecisionV1": "type",
+        "ContextPackResourcePreviewV1": "type"
+      }
+    },
+    "lib/server/research-resource-store": {
+      "source": "src/lib/server/research-resource-store.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-context-resource-adapters.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-catalog.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-ingestion.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-restore-lock-child.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-retrieval.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-semantic.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-context-pack-builder.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-context-resource-adapters.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-catalog.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-ingestion.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-retrieval.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-semantic.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "createResearchResourceStore": "value",
+        "ResearchResourceStore": "type",
+        "ResearchResourceStoreError": "value",
+        "ResourceIngestFailureV1": "type",
+        "ResourceOperationalTransaction": "type",
+        "VerifiedResourceSnapshot": "type",
+        "ResourceEmbeddingTaskRecordV1": "type"
+      }
+    },
+    "lib/coven-paths": {
+      "source": "src/lib/coven-paths.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-generations.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-media-store.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway-store.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-topic-discovery-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-topic-discovery-store.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "caveHome": "value"
+      }
+    },
+    "lib/server/atomic-write": {
+      "source": "src/lib/server/atomic-write.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-generations.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway-store.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "writeJsonAtomic": "value",
+        "writeFileAtomic": "value"
+      }
+    },
+    "lib/server/corrupt-aside": {
+      "source": "src/lib/server/corrupt-aside.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-generations.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "corruptAsidePath": "value"
+      }
+    },
+    "lib/server/process-intent-lock": {
+      "source": "src/lib/server/process-intent-lock.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-generations.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-media-jobs.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-topic-discovery-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-topic-discovery-store.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "acquireProcessIntentLock": "value",
+        "withProcessIntentLock": "value"
+      }
+    },
+    "lib/cave-projects": {
+      "source": "src/lib/cave-projects.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-landing.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-landing.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-landing.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": true
+        }
+      ],
+      "symbols": {
+        "CaveProject": "type",
+        "createProject": "value",
+        "deleteProject": "value",
+        "loadProjects": "value",
+        "projectForRoot": "value"
+      },
+      "dynamic": true
+    },
+    "lib/project-access-levels": {
+      "source": "src/lib/project-access-levels.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-landing.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "accessLevelSatisfies": "value",
+        "maxAccessLevel": "value",
+        "normalizeAccessLevel": "value",
+        "ProjectAccessLevel": "type"
+      }
+    },
+    "lib/project-permissions": {
+      "source": "src/lib/project-permissions.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-landing.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/lib/server/research-landing.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": true
+        }
+      ],
+      "symbols": {
+        "effectiveProjectAccess": "value",
+        "grantProjectToFamiliar": "value",
+        "loadProjectPermissions": "value",
+        "revokeAllGrantsForProject": "value"
+      },
+      "dynamic": true
+    },
+    "lib/vault": {
+      "source": "src/lib/vault.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-media-readiness.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-podcast-pipeline.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "resolveSecret": "value"
+      }
+    },
+    "lib/voice/speech-models": {
+      "source": "src/lib/voice/speech-models.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-media-readiness.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-podcast-pipeline.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "speechEnginesReadiness": "value",
+        "speechModelById": "value",
+        "withSpeechModelUse": "value",
+        "SpeechModelReadiness": "type"
+      }
+    },
+    "lib/server/research-session-authority": {
+      "source": "src/lib/server/research-session-authority.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-lifecycle.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "ResearchSessionAuthority": "type",
+        "ResearchSessionOwnerKind": "type",
+        "parseResearchSessionAuthority": "value"
+      }
+    },
+    "lib/flows": {
+      "source": "src/lib/flows.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-lifecycle.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-runner-automation-scheduling.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner-concurrency-terminal.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner-lifecycle-actions.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner-reconciliation-evidence.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-mission-x-hydration.test.ts",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "FlowRunRecord": "type"
+      }
+    },
+    "lib/server/research-launch-policy": {
+      "source": "src/lib/server/research-launch-policy.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-lifecycle.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "ResearchSessionLaunchDiagnostic": "type"
+      }
+    },
+    "lib/cave-conversations": {
+      "source": "src/lib/cave-conversations.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner-lifecycle-actions.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-mission-x-hydration.test.ts",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "ConversationFile": "type"
+      },
+      "dynamic": true
+    },
+    "lib/flow/flow-doc": {
+      "source": "src/lib/flow/flow-doc.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-x-hydration.test.ts",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "FlowDoc": "type"
+      }
+    },
+    "lib/automation-runs": {
+      "source": "src/lib/automation-runs.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-runner-automation-scheduling.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner-concurrency-terminal.test.ts",
+          "test": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner-reconciliation-evidence.test.ts",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "AutomationRunRecord": "type"
+      }
+    },
+    "lib/utf16": {
+      "source": "src/lib/utf16.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "hasUnpairedUtf16Surrogate": "value"
+      }
+    },
+    "lib/server/daemon-session-error": {
+      "source": "src/lib/server/daemon-session-error.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "daemonSessionAlreadyGone": "value"
+      }
+    },
+    "lib/research-mission-flow": {
+      "source": "src/lib/research-mission-flow.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "buildResearchMissionFlow": "value"
+      }
+    },
+    "lib/server/research-mission-lock": {
+      "source": "src/lib/server/research-mission-lock.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway-store.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-run-gateway.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "withResearchMissionActionLock": "value"
+      }
+    },
+    "lib/server/research-mission-x-runtime": {
+      "source": "src/lib/server/research-mission-x-runtime.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/lib/server/research-mission-x-hydration.test.ts",
+          "test": true
+        }
+      ],
+      "symbols": {
+        "ResearchMissionXHydrationError": "value",
+        "mergeXSourceRefs": "value",
+        "researchMissionHoldsXRuntime": "value",
+        "ResearchMissionXHydration": "type"
+      },
+      "dynamic": true
+    },
+    "lib/server/flow-copilot-session": {
+      "source": "src/lib/server/flow-copilot-session.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner-lifecycle-actions.test.ts",
+          "test": true
+        }
+      ],
+      "symbols": {},
+      "dynamic": true
+    },
+    "lib/coven-daemon": {
+      "source": "src/lib/coven-daemon.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        }
+      ],
+      "symbols": {},
+      "dynamic": true
+    },
+    "lib/server/flow-attention": {
+      "source": "src/lib/server/flow-attention.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        }
+      ],
+      "symbols": {},
+      "dynamic": true
+    },
+    "lib/server/flow-executor": {
+      "source": "src/lib/server/flow-executor.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        }
+      ],
+      "symbols": {},
+      "dynamic": true
+    },
+    "lib/server/flow-store": {
+      "source": "src/lib/server/flow-store.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        }
+      ],
+      "symbols": {},
+      "dynamic": true
+    },
+    "lib/server/flow-session-transcript": {
+      "source": "src/lib/server/flow-session-transcript.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        }
+      ],
+      "symbols": {},
+      "dynamic": true
+    },
+    "lib/codex-automations": {
+      "source": "src/lib/codex-automations.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        },
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        }
+      ],
+      "symbols": {},
+      "dynamic": true
+    },
+    "lib/server/coven-automations-client": {
+      "source": "src/lib/server/coven-automations-client.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        }
+      ],
+      "symbols": {},
+      "dynamic": true
+    },
+    "lib/server/coven-stream-text": {
+      "source": "src/lib/server/coven-stream-text.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-model-task-executor.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "assistantTextFromStream": "value"
+      }
+    },
+    "lib/cave-config": {
+      "source": "src/lib/cave-config.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-model-task-executor.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        }
+      ],
+      "symbols": {},
+      "dynamic": true
+    },
+    "lib/server/coven-oneshot": {
+      "source": "src/lib/server/coven-oneshot.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-model-task-executor.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": true
+        }
+      ],
+      "symbols": {},
+      "dynamic": true
+    },
+    "lib/voice/local-tts-server": {
+      "source": "src/lib/voice/local-tts-server.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-podcast-pipeline.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "runKokoro": "value",
+        "runPiper": "value"
+      }
+    },
+    "lib/voice/local-tts": {
+      "source": "src/lib/voice/local-tts.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-podcast-pipeline.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-video-renderer.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "LOCAL_TTS_MAX_CHARS": "value"
+      }
+    },
+    "lib/server/research-resource-recovery": {
+      "source": "src/lib/server/research-resource-recovery.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-resource-catalog.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "recoverInterruptedResearchResourceRestore": "value"
+      }
+    },
+    "lib/server/research-resource-maintenance": {
+      "source": "src/lib/server/research-resource-maintenance.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-resource-ingestion.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "createResearchResourceMaintenance": "value",
+        "ResearchResourceMaintenanceOptions": "type"
+      }
+    },
+    "lib/server/research-resource-state": {
+      "source": "src/lib/server/research-resource-state.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-resource-ingestion.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "laterTimestamp": "value",
+        "stableId": "value",
+        "deletionRevision": "value",
+        "manifestById": "value",
+        "nextManifest": "value",
+        "authority": "value"
+      }
+    },
+    "lib/server/research-resource-lexical-index": {
+      "source": "src/lib/server/research-resource-lexical-index.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-resource-retrieval.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-semantic.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-ingestion.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-ingestion.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-retrieval.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-semantic.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "openResearchResourceLexicalIndex": "value",
+        "ResearchLexicalSearchHit": "type",
+        "ResearchResourceLexicalIndex": "type",
+        "chunkResearchResourceUtf8": "value",
+        "ResearchLexicalAuthority": "type"
+      }
+    },
+    "lib/server/research-resource-semantic-index": {
+      "source": "src/lib/server/research-resource-semantic-index.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-resource-semantic.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        },
+        {
+          "file": "src/lib/server/research-resource-semantic.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "openResearchResourceSemanticIndex": "value",
+        "rebuildResearchResourceSemanticIndex": "value",
+        "researchResourceSemanticIndexPath": "value",
+        "ResearchResourceSemanticIndexError": "value",
+        "ResearchResourceSemanticIndex": "type",
+        "ResearchSemanticAuthority": "type",
+        "ResearchSemanticProbe": "type"
+      }
+    },
+    "lib/server/familiar-reminder-route": {
+      "source": "src/lib/server/familiar-reminder-route.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-run-gateway-route.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "requireFamiliar": "value"
+      }
+    },
+    "lib/server/client-v1/path-ownership": {
+      "source": "src/lib/server/client-v1/path-ownership.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-topic-discovery-store.ts",
+          "test": false,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "assertExclusivePathOwnershipSync": "value"
+      }
+    },
+    "lib/server/x-article-provider": {
+      "source": "src/lib/server/x-article-provider.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/links/route.test.ts",
+          "test": true,
+          "typeOnly": true,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "XArticleProvider": "type"
+      }
+    },
+    "lib/prompt-enhancer": {
+      "source": "src/lib/prompt-enhancer.ts",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/research-tab-prompt.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "buildPromptEnhancement": "value"
+      }
+    },
+    "lib/server/x-article-content-sha": {
+      "source": "src/lib/server/x-article-content-sha.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-link-materialization.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "xArticleContentSha256": "value"
+      }
+    },
+    "lib/server/research-links-legacy-store": {
+      "source": "src/lib/server/research-links-legacy-store.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-resource-catalog.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": false
+        }
+      ],
+      "symbols": {
+        "writeResearchLinksVerified": "value"
+      }
+    },
+    "lib/server/x-credentials": {
+      "source": "src/lib/server/x-credentials.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-x-hydration.test.ts",
+          "test": true
+        }
+      ],
+      "symbols": {}
+    },
+    "lib/cave-inbox": {
+      "source": "src/lib/cave-inbox.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-flow-attention.integration.test.ts",
+          "test": true
+        }
+      ],
+      "symbols": {}
+    },
+    "components/flow-execution-link": {
+      "source": "src/components/flow-execution-link.tsx",
+      "imports": [
+        {
+          "file": "src/components/role-surfaces/researcher-surface-link.test.tsx",
+          "test": true
+        }
+      ],
+      "symbols": {}
+    },
+    "lib/server/saved-links-route": {
+      "source": "src/lib/server/saved-links-route.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/links/route.ts",
+          "test": false
+        }
+      ],
+      "symbols": {
+        "createResearchLinksRouteHandlers": "value"
+      }
+    },
+    "lib/collect-saved-link-urls": {
+      "source": "src/lib/collect-saved-link-urls.ts",
+      "imports": [
+        {
+          "file": "src/app/api/research/links/route.ts",
+          "test": false
+        }
+      ],
+      "symbols": {
+        "collectIngestUrls": "value"
+      }
+    }
+  }
+}

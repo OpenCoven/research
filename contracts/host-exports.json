@@ -1,0 +1,1897 @@
+{
+  "version": 1,
+  "modules": {
+    "lib/server/api-security": {
+      "production": true,
+      "values": [
+        "readJsonBody",
+        "rejectNonLocalRequest",
+        "rejectResearchMediaRequest",
+        "rejectResearchRunStreamRequest"
+      ],
+      "types": []
+    },
+    "lib/feature-flags": {
+      "production": true,
+      "values": [
+        "caveResearchContextPacks",
+        "caveResearchRemoteContent",
+        "caveResearchResources",
+        "caveResearchSemantic",
+        "caveResearchTopicDiscovery"
+      ],
+      "types": []
+    },
+    "lib/research-protocol/context-pack": {
+      "production": true,
+      "values": [
+        "parseContextPackV1",
+        "parseContextSelectorV1"
+      ],
+      "types": [
+        "ContextPackResourceV1",
+        "ContextPackV1",
+        "ContextSelectorV1"
+      ]
+    },
+    "lib/server/research-context-pack-store": {
+      "production": true,
+      "values": [
+        "ContextPackStoreError",
+        "createContextPackStore"
+      ],
+      "types": [
+        "ContextPackStore",
+        "VerifiedContextPack"
+      ]
+    },
+    "lib/research-generations": {
+      "production": true,
+      "values": [
+        "RESEARCH_GENERATION_CREATABLE_KINDS",
+        "RESEARCH_GENERATION_DIRECTIONS_MAX_LENGTH",
+        "RESEARCH_GENERATION_KINDS",
+        "RESEARCH_GENERATION_MEDIA_KINDS",
+        "RESEARCH_GENERATION_STATUSES",
+        "RESEARCH_MEDIA_LENGTH_LIMITS",
+        "RESEARCH_THREAD_POST_MAX_CHARS",
+        "cancelResearchGeneration",
+        "createResearchGeneration",
+        "elevenLabsPodcastDirection",
+        "getResearchGenerationReadiness",
+        "isResearchGenerationContent",
+        "isResearchGenerationCreatableKind",
+        "isResearchGenerationKind",
+        "isResearchGenerationMediaKind",
+        "isResearchGenerationProgress",
+        "isResearchGenerationStage",
+        "isResearchGenerationStatusForKind",
+        "isValidResearchGenerationFamiliarId",
+        "listResearchGenerations",
+        "removeResearchGeneration",
+        "renderResearchGeneration",
+        "validateCreateResearchGenerationInput",
+        "validateResearchMediaRenderConfig"
+      ],
+      "types": [
+        "CreateResearchGenerationInput",
+        "ResearchGeneration",
+        "ResearchGenerationContent",
+        "ResearchGenerationCreatableKind",
+        "ResearchGenerationKind",
+        "ResearchGenerationMediaFileRef",
+        "ResearchGenerationMediaKind",
+        "ResearchGenerationProgress",
+        "ResearchGenerationReadiness",
+        "ResearchGenerationScriptSegment",
+        "ResearchGenerationSlide",
+        "ResearchGenerationStage",
+        "ResearchGenerationStat",
+        "ResearchGenerationStatus",
+        "ResearchGenerationStoryboardScene",
+        "ResearchGenerationThreadPost",
+        "ResearchGenerationVideoChapter",
+        "ResearchMediaLength",
+        "ResearchMediaProvider",
+        "ResearchMediaReadiness",
+        "ResearchMediaReadyVoice",
+        "ResearchMediaRenderConfig",
+        "ResearchPodcastSpeaker",
+        "ResearchPodcastStyle"
+      ]
+    },
+    "lib/research-media-ticket": {
+      "production": true,
+      "values": [
+        "RESEARCH_MEDIA_PATH",
+        "RESEARCH_MEDIA_TICKET_PARAM",
+        "signResearchMediaTicket"
+      ],
+      "types": []
+    },
+    "lib/github-token": {
+      "production": true,
+      "values": [
+        "resolveGitHubToken",
+        "resolveGitHubTokenForRead"
+      ],
+      "types": []
+    },
+    "lib/research-github-repo": {
+      "production": true,
+      "values": [
+        "GITHUB_REPO_FILE_BYTE_CAP",
+        "GITHUB_REPO_README_BYTE_CAP",
+        "GITHUB_REPO_TREE_ENTRY_CAP",
+        "MAX_GITHUB_REPOSITORIES_PER_INGEST",
+        "buildGithubRepoTree",
+        "formatGithubBytes",
+        "githubRepoCandidates",
+        "githubRepoFileEndpoint",
+        "githubRepoFileWebUrl",
+        "githubRepoReadmeLinkUrl",
+        "githubRepoTreeWebUrl",
+        "githubRepoWebUrl",
+        "normalizeGithubRepoSnapshot",
+        "parseGithubRepoInput",
+        "sanitizeGithubObjectSha",
+        "sanitizeGithubRef"
+      ],
+      "types": [
+        "GithubRepoFileView",
+        "GithubRepoReadme",
+        "GithubRepoSnapshot",
+        "GithubRepoSummary",
+        "GithubRepoTreeEntry",
+        "GithubRepoView",
+        "GithubRepoVisibility",
+        "RepoTreeNode"
+      ]
+    },
+    "lib/link-extractor": {
+      "production": true,
+      "values": [
+        "extractLinks"
+      ],
+      "types": []
+    },
+    "lib/hf-papers": {
+      "production": true,
+      "values": [
+        "arxivIdFromUrl",
+        "hfPaperUrl",
+        "isArxivPaperId",
+        "parseHfPaperReferences"
+      ],
+      "types": []
+    },
+    "lib/link-organizer": {
+      "production": true,
+      "values": [
+        "LINK_CATEGORY_ORDER",
+        "MAX_LINKS_PER_SAVE",
+        "categorizeLink",
+        "groupSavedLinksByUsage",
+        "linkCategoryMeta",
+        "savedLinkDedupeKey",
+        "summarizeLinkIntake"
+      ],
+      "types": [
+        "LinkCategory",
+        "SavedLink",
+        "SavedLinkSummary"
+      ]
+    },
+    "lib/server/research-links": {
+      "production": true,
+      "values": [
+        "MAX_LINKS_PER_SAVE",
+        "getSavedLinkById",
+        "listSavedLinkSummaries",
+        "listSavedLinks",
+        "removeSavedLink",
+        "reserveXArticleCandidates",
+        "saveResearchLinks",
+        "toSavedLinkSummary"
+      ],
+      "types": [
+        "ResearchLinkEnrichment",
+        "XArticleCandidateReservation"
+      ]
+    },
+    "lib/server/x-article-ingest": {
+      "production": true,
+      "values": [
+        "XArticleIngestCapError",
+        "assertXArticleIngestCap",
+        "enrichXArticleUrls"
+      ],
+      "types": [
+        "XArticleBatchResult"
+      ]
+    },
+    "lib/x-articles": {
+      "production": true,
+      "values": [
+        "MAX_X_ARTICLES_PER_INGEST",
+        "isValidXArticleAuthorDisplayName",
+        "isValidXArticleAuthorId",
+        "isValidXArticleContentSha256",
+        "isValidXArticleSourcePostId",
+        "isValidXArticleUsername",
+        "normalizeXArticleCoverImageUrl",
+        "normalizeXArticleTimestamp",
+        "parseXArticleCandidateUrl"
+      ],
+      "types": [
+        "NormalizedXArticle",
+        "XArticleIngestFailure",
+        "XArticleSnapshot"
+      ]
+    },
+    "lib/server/x-article-provider": {
+      "production": false,
+      "values": [],
+      "types": [
+        "XArticleProvider"
+      ]
+    },
+    "lib/server/hf-paper-metadata": {
+      "production": true,
+      "values": [
+        "fetchHfPaperMetadata"
+      ],
+      "types": []
+    },
+    "lib/research-missions": {
+      "production": true,
+      "values": [
+        "RESEARCH_ARTIFACT_KINDS",
+        "RESEARCH_BOUND_LIMITS",
+        "RESEARCH_COST_UNAVAILABLE_STOP_REASON",
+        "RESEARCH_DIRECTION_MAX_LENGTH",
+        "RESEARCH_HARNESS_IDS",
+        "RESEARCH_INTENT_MAX_LENGTH",
+        "RESEARCH_INTENT_MIN_LENGTH",
+        "RESEARCH_MISSION_MODES",
+        "RESEARCH_PROJECT_ROOT_MAX_LENGTH",
+        "RESEARCH_RUNTIME_DEFAULT_HARNESS",
+        "RESEARCH_RUN_ORIGIN_LABELS",
+        "STANDARD_RESEARCH_ARTIFACTS",
+        "allowedResearchActions",
+        "describeResearchSchedule",
+        "nextResearchIterationNumber",
+        "parseResearchMission",
+        "researchArtifactKindForMode",
+        "researchBoundReadings",
+        "researchContinueLabel",
+        "researchDiagnosticTrace",
+        "researchIntentAddsContext",
+        "researchPhaseMeta",
+        "researchPhaseStatuses",
+        "researchSourceStatusCounts",
+        "validateCreateResearchMissionInput"
+      ],
+      "types": [
+        "CreateResearchMissionInput",
+        "ResearchArtifactKind",
+        "ResearchArtifactRef",
+        "ResearchAutomationLink",
+        "ResearchBounds",
+        "ResearchMission",
+        "ResearchMissionAction",
+        "ResearchMissionActionInput",
+        "ResearchMissionArchiveSource",
+        "ResearchMissionMode",
+        "ResearchMissionStatus",
+        "ResearchSourceDraft",
+        "ResearchSourceLedgerSnapshot",
+        "ResearchSourcePatch",
+        "ResearchSourceRef"
+      ]
+    },
+    "lib/server/research-mission-store": {
+      "production": true,
+      "values": [
+        "RESEARCH_SESSION_OWNER_WRITE_GRANT_DIAGNOSTIC",
+        "assertResearchSessionOwnerOutsideWriteRoots",
+        "clearResearchMissionSessionOwner",
+        "createResearchMissionWorkspace",
+        "isResearchFileIntegrityError",
+        "isValidResearchMissionId",
+        "listResearchMissions",
+        "loadResearchMission",
+        "loadResearchMissionSessionOwner",
+        "missionArtifactPath",
+        "readValidatedMissionFile",
+        "recordResearchMissionSessionOwner",
+        "removeResearchMissionWorkspace",
+        "researchMissionWorkspacePath",
+        "researchMissionsRoot",
+        "restoreResearchMissionSourceFile",
+        "saveResearchMission",
+        "writeResearchMissionSourceFile"
+      ],
+      "types": [
+        "ResearchMissionSessionOwner"
+      ]
+    },
+    "lib/server/session-security": {
+      "production": true,
+      "values": [
+        "MAX_SESSION_JSON_BYTES",
+        "normalizeProjectRoot"
+      ],
+      "types": []
+    },
+    "lib/codex-automation-form": {
+      "production": true,
+      "values": [
+        "parseCodexRrule"
+      ],
+      "types": []
+    },
+    "lib/server/familiar-id": {
+      "production": true,
+      "values": [
+        "isValidFamiliarId"
+      ],
+      "types": []
+    },
+    "lib/server/knowledge-vault": {
+      "production": true,
+      "values": [
+        "listKnowledgeEntries",
+        "selectKnowledgeForFamiliar",
+        "writeKnowledgeEntry"
+      ],
+      "types": [
+        "KnowledgeEntry"
+      ]
+    },
+    "lib/server/x-sources": {
+      "production": true,
+      "values": [
+        "listSavedXSources"
+      ],
+      "types": [
+        "SavedXSource"
+      ]
+    },
+    "lib/agentic-diagnostics": {
+      "production": true,
+      "values": [
+        "recordAgenticDiagnostic"
+      ],
+      "types": [
+        "AgenticDiagnosticEvent",
+        "AgenticDiagnosticInput",
+        "AgenticDiagnosticSink"
+      ]
+    },
+    "lib/types": {
+      "production": true,
+      "values": [],
+      "types": [
+        "Familiar",
+        "SessionRow"
+      ]
+    },
+    "lib/server/x-access": {
+      "production": true,
+      "values": [
+        "hasXCapability"
+      ],
+      "types": []
+    },
+    "lib/research-resource-contracts": {
+      "production": true,
+      "values": [
+        "parseResourceManifestV1",
+        "parseResourceQueryResponseV1",
+        "parseResourceQueryV1"
+      ],
+      "types": [
+        "ResourceIngestJobStageV1",
+        "ResourceIngestJobV1",
+        "ResourceManifestV1",
+        "ResourceNormalizationReceiptV1",
+        "ResourcePageBoundaryV1",
+        "ResourceQueryHitV1",
+        "ResourceQueryResponseV1",
+        "ResourceQueryV1",
+        "ResourceSnapshotV1"
+      ]
+    },
+    "components/ui/button": {
+      "production": true,
+      "values": [
+        "Button"
+      ],
+      "types": []
+    },
+    "lib/icon": {
+      "production": true,
+      "values": [
+        "Icon"
+      ],
+      "types": [
+        "IconName"
+      ]
+    },
+    "lib/use-focus-trap": {
+      "production": true,
+      "values": [
+        "FOCUSABLE",
+        "FocusTrapPortalLayersContext",
+        "PortalLayerDepthContext",
+        "PortalLayerRootContext",
+        "useFocusTrap",
+        "usePortalLayerRootId"
+      ],
+      "types": []
+    },
+    "components/ui/modal": {
+      "production": true,
+      "values": [
+        "Modal"
+      ],
+      "types": []
+    },
+    "components/ui/relative-time": {
+      "production": true,
+      "values": [
+        "RelativeTime"
+      ],
+      "types": []
+    },
+    "components/ui/live-region": {
+      "production": true,
+      "values": [
+        "LiveRegionProvider",
+        "useAnnouncer"
+      ],
+      "types": []
+    },
+    "lib/grimoire-link": {
+      "production": true,
+      "values": [
+        "openGrimoireDoc"
+      ],
+      "types": []
+    },
+    "lib/research-mission-client": {
+      "production": true,
+      "values": [
+        "actOnResearchMission",
+        "createResearchMission",
+        "getResearchMissionFile",
+        "isActiveResearchMission",
+        "listResearchMissions",
+        "runResearchAutomationNow",
+        "scheduleResearchMission",
+        "selectStableMission",
+        "setResearchAutomationStatus"
+      ],
+      "types": [
+        "ResearchMissionFile"
+      ]
+    },
+    "components/ui/popover": {
+      "production": true,
+      "values": [
+        "Popover",
+        "PopoverItem"
+      ],
+      "types": []
+    },
+    "components/ui/error-state": {
+      "production": true,
+      "values": [
+        "ErrorState"
+      ],
+      "types": []
+    },
+    "lib/relative-time": {
+      "production": true,
+      "values": [
+        "relativeTime"
+      ],
+      "types": []
+    },
+    "components/message-bubble": {
+      "production": true,
+      "values": [
+        "MarkdownBlock"
+      ],
+      "types": []
+    },
+    "lib/clipboard": {
+      "production": true,
+      "values": [
+        "copyText"
+      ],
+      "types": []
+    },
+    "lib/platform-keys": {
+      "production": true,
+      "values": [
+        "platformizeHint",
+        "useKeySymbols"
+      ],
+      "types": []
+    },
+    "components/ui/select": {
+      "production": true,
+      "values": [
+        "StandardSelect"
+      ],
+      "types": [
+        "StandardSelectOption"
+      ]
+    },
+    "lib/chat-model-state": {
+      "production": true,
+      "values": [],
+      "types": [
+        "ChatModelState"
+      ]
+    },
+    "lib/research-mission-routing": {
+      "production": true,
+      "values": [
+        "createResearchMissionInputFromIntent",
+        "defaultResearchPlan",
+        "inferResearchMissionMode"
+      ],
+      "types": []
+    },
+    "lib/use-runtime-model-options": {
+      "production": true,
+      "values": [
+        "inventoryProvenanceLabel",
+        "useRuntimeModelInventory"
+      ],
+      "types": []
+    },
+    "lib/use-prompt-enhance": {
+      "production": true,
+      "values": [
+        "usePromptEnhance"
+      ],
+      "types": []
+    },
+    "components/ui/skeleton": {
+      "production": true,
+      "values": [
+        "Skeleton",
+        "SkeletonGroup",
+        "SkeletonRows"
+      ],
+      "types": []
+    },
+    "components/ui/citation": {
+      "production": true,
+      "values": [
+        "CitationSources"
+      ],
+      "types": []
+    },
+    "components/ui/clamped-text": {
+      "production": true,
+      "values": [
+        "ClampedText"
+      ],
+      "types": []
+    },
+    "components/ui/tabs": {
+      "production": true,
+      "values": [
+        "Tabs"
+      ],
+      "types": [
+        "TabItem"
+      ]
+    },
+    "lib/citations": {
+      "production": true,
+      "values": [
+        "sourcesToCitations"
+      ],
+      "types": []
+    },
+    "lib/flow-discussion": {
+      "production": true,
+      "values": [
+        "useFlowDiscussion"
+      ],
+      "types": []
+    },
+    "lib/use-minute-tick": {
+      "production": true,
+      "values": [
+        "useMinuteTick"
+      ],
+      "types": []
+    },
+    "components/flow-executions-dialog": {
+      "production": true,
+      "values": [
+        "FlowExecutionsDialog"
+      ],
+      "types": []
+    },
+    "lib/roving-list": {
+      "production": true,
+      "values": [
+        "nextRovingId",
+        "resolveRovingId"
+      ],
+      "types": [
+        "RovingKey"
+      ]
+    },
+    "components/document-reader": {
+      "production": true,
+      "values": [
+        "DocumentReader"
+      ],
+      "types": [
+        "DocumentReaderApi"
+      ]
+    },
+    "components/ui/overflow-menu": {
+      "production": true,
+      "values": [
+        "OverflowMenu"
+      ],
+      "types": []
+    },
+    "components/role-surfaces/podcast-transcript": {
+      "production": true,
+      "values": [
+        "PodcastTranscript"
+      ],
+      "types": []
+    },
+    "lib/authed-image": {
+      "production": true,
+      "values": [
+        "useAuthedImageState"
+      ],
+      "types": []
+    },
+    "lib/voice/elevenlabs-shared": {
+      "production": true,
+      "values": [
+        "DEFAULT_ELEVENLABS_MODEL_ID",
+        "DEFAULT_ELEVENLABS_PODCAST_MODEL_ID",
+        "DEFAULT_ELEVENLABS_VOICE_ID",
+        "DEFAULT_ELEVENLABS_VOICE_SETTINGS",
+        "ELEVENLABS_DELIVERY_PRESETS",
+        "ELEVENLABS_MAX_SEED",
+        "ELEVENLABS_PODCAST_MODEL_OPTIONS",
+        "describeElevenLabsVoiceSettings",
+        "elevenLabsDeliveryPreset",
+        "isValidElevenLabsSeed",
+        "isValidElevenLabsVoiceId",
+        "modelSupportsRequestStitching"
+      ],
+      "types": [
+        "ElevenLabsDeliveryPresetId",
+        "ElevenLabsVoiceSettings"
+      ]
+    },
+    "lib/voice/settings-client": {
+      "production": true,
+      "values": [
+        "loadElevenLabsCatalog"
+      ],
+      "types": [
+        "ElevenLabsCatalogState"
+      ]
+    },
+    "components/ui/search-input": {
+      "production": true,
+      "values": [
+        "SearchInput"
+      ],
+      "types": []
+    },
+    "lib/datetime-format": {
+      "production": true,
+      "values": [
+        "formatDate",
+        "useDateTimePrefs"
+      ],
+      "types": []
+    },
+    "lib/prompt-enhancer": {
+      "production": false,
+      "values": [
+        "buildPromptEnhancement"
+      ],
+      "types": []
+    },
+    "components/agentic-recommendation-card": {
+      "production": true,
+      "values": [
+        "AgenticRecommendationCard"
+      ],
+      "types": [
+        "AgenticRecommendationCardState"
+      ]
+    },
+    "components/ui/empty-state": {
+      "production": true,
+      "values": [
+        "EmptyState"
+      ],
+      "types": []
+    },
+    "lib/agentic-recommendations": {
+      "production": true,
+      "values": [
+        "AGENTIC_EVIDENCE_KINDS",
+        "contextFingerprint",
+        "parseAgenticRecommendationsOutput",
+        "rankAgenticRecommendations"
+      ],
+      "types": [
+        "AgenticEvidenceKind",
+        "AgenticEvidenceRef",
+        "AgenticPayload",
+        "AgenticRecommendation",
+        "AgenticVerificationCheckState",
+        "RankedAgenticRecommendation"
+      ]
+    },
+    "lib/use-agentic-recommendations": {
+      "production": true,
+      "values": [
+        "useAgenticRecommendations"
+      ],
+      "types": []
+    },
+    "components/ui/authed-image": {
+      "production": true,
+      "values": [
+        "AuthedImage"
+      ],
+      "types": []
+    },
+    "lib/use-pausable-poll": {
+      "production": true,
+      "values": [
+        "usePausablePoll"
+      ],
+      "types": []
+    },
+    "lib/familiar-studio-context": {
+      "production": true,
+      "values": [
+        "openFamiliarStudioSettingsTab"
+      ],
+      "types": []
+    },
+    "lib/x-api": {
+      "production": true,
+      "values": [
+        "parseXPostUrl"
+      ],
+      "types": [
+        "NormalizedXPost",
+        "XErrorCode"
+      ]
+    },
+    "lib/use-surface-history": {
+      "production": true,
+      "values": [
+        "useTrackedSurfaceValue"
+      ],
+      "types": []
+    },
+    "lib/role-surface-state": {
+      "production": true,
+      "values": [
+        "useRoleSurfaceState"
+      ],
+      "types": []
+    },
+    "lib/role-surfaces": {
+      "production": true,
+      "values": [],
+      "types": [
+        "RoleSurfaceContext"
+      ]
+    },
+    "components/role-surfaces/ids": {
+      "production": true,
+      "values": [
+        "RESEARCHER_SURFACE_ID"
+      ],
+      "types": []
+    },
+    "components/role-surfaces/researcher-status": {
+      "production": true,
+      "values": [
+        "researchLiveRunCount"
+      ],
+      "types": []
+    },
+    "lib/research-protocol/digest": {
+      "production": true,
+      "values": [
+        "canonicalJson",
+        "digestProtocolObject",
+        "sha256Digest"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/context-pack.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/model-task.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/model-task-result.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/research-run.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/run-event.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/run-manifest-assembling.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/run-manifest-final-local.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/topic-discovery-job.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/topic-proposal.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/context-pack-pdf-selector.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/unknown-major.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "lib/research-protocol/common": {
+      "production": true,
+      "values": [
+        "RETENTION_ORDER",
+        "childPath",
+        "compareUtcTimestamps",
+        "copyProtocolJsonValue",
+        "fail",
+        "hasOwn",
+        "indexPath",
+        "isOpaqueId",
+        "isRecord",
+        "isSha256",
+        "isUtcTimestamp",
+        "parseBoolean",
+        "parseEnumValue",
+        "parseNonNegativeFiniteNumber",
+        "parseObject",
+        "parseOpaqueIdentifier",
+        "parsePositiveSafeInteger",
+        "parseRequiredField",
+        "parseResearchContextBindingV1",
+        "parseSafeIntegerInRange",
+        "parseSchema",
+        "parseSha256",
+        "parseString",
+        "parseUtc",
+        "pass",
+        "retentionDoesNotExceed",
+        "utcTimestampToProtocolNanoseconds"
+      ],
+      "types": [
+        "ProtocolParseResult",
+        "ResearchContextBindingV1",
+        "RetentionPolicyV1",
+        "UnknownFields"
+      ]
+    },
+    "schemas/research/v1/fixtures/invalid/model-task-policy.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/model-task-result-usage.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/model-task-result.schema.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/model-task.schema.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/research-run.schema.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/run-event.schema.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/run-manifest.schema.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/research-run-local-tenant.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/research-run-embedded-retention-7-days-provisional.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/research-run-embedded-retention-run-only-provisional.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/research-run-waiting-phase.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/research-run-topic-provenance-accepted-missing.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/research-run-topic-provenance-context-missing.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/research-run-topic-provenance-mismatch.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-event-sequence.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/research-run-hosted.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/research-run-hosted-without-tenant.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/research-run-topic-provenance-absent.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/run-event-deletion-benign-extension.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/run-event-unicode-extension.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-event-default-ignorable-deletion-extension.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-event-non-ascii-deletion-extension.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-event-unicode-sensitive-extension.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/run-manifest-final-cloud.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/run-manifest-retention-update.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/scenarios/objects/run-manifest-previous-digest.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/scenarios/objects/run-manifest-final-mutation.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-deletion-pair.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-private-title.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-deletion-event.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-model-raw-prompt.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-deleted-content-payload.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-nested-private-extension.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-nested-privacy-storage-keys.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-root-private-excerpts.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-scheduled-null-expiry.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-split-object-store-key.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-retention-7-days-overflow.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-retention-run-only-overflow.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-retention-7-days-leap-overflow.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-retention-run-only-leap-overflow.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-finalized-before-created.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-source-before-created.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-source-after-finalized.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-artifact-before-created.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-artifact-after-finalized.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-retention-before-created.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-retention-before-finalized.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-content-expires-before-created.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-content-expires-before-finalized.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-deletion-homoglyph-array.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-deletion-homoglyph-nested.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-deletion-homoglyph-root.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/run-manifest-unicode-sensitive-extension.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/run-manifest-extension-boundaries.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/run-manifest-deletion-ascii-extension.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/run-manifest-nested-benign-extension.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/run-manifest-unicode-extension.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/run-manifest-chronology-boundaries.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/run-manifest-retention-7-days-boundary.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/run-manifest-retention-run-only-boundary.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/run-manifest-retention-7-days-leap-boundary.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/run-manifest-retention-run-only-leap-boundary.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/topic-discovery-job-eight.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/topic-discovery-job-one.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/topic-discovery-job-receipt-familiar.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/topic-discovery-job-two.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/invalid/topic-proposal-score.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/topic-discovery-job.schema.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/topic-proposal.schema.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "schemas/research/v1/fixtures/valid/topic-discovery-job-seven.json": {
+      "production": false,
+      "values": [
+        "default"
+      ],
+      "types": []
+    },
+    "lib/familiar-stream": {
+      "production": true,
+      "values": [
+        "streamFamiliarText"
+      ],
+      "types": []
+    },
+    "lib/next-paths": {
+      "production": true,
+      "values": [
+        "extractNextPaths"
+      ],
+      "types": []
+    },
+    "lib/secret-redaction": {
+      "production": true,
+      "values": [
+        "containsSecretText"
+      ],
+      "types": []
+    },
+    "lib/search-document": {
+      "production": true,
+      "values": [
+        "normalizeSearchDocument"
+      ],
+      "types": []
+    },
+    "lib/search-provider": {
+      "production": true,
+      "values": [
+        "permitsByProject"
+      ],
+      "types": [
+        "SearchProvider",
+        "SearchRequesterContext"
+      ]
+    },
+    "lib/server/research-resource-store": {
+      "production": true,
+      "values": [
+        "ResearchResourceStoreError",
+        "createResearchResourceStore"
+      ],
+      "types": [
+        "ResearchResourceStore",
+        "ResourceEmbeddingTaskRecordV1",
+        "ResourceIngestFailureV1",
+        "ResourceOperationalTransaction",
+        "VerifiedResourceSnapshot"
+      ]
+    },
+    "lib/research-context-pack": {
+      "production": true,
+      "values": [
+        "RESOURCE_KIND_TO_CONTEXT_PACK_KIND",
+        "contextPackResourceId",
+        "contextPackTrustForManifest",
+        "parseContextPackBuildReceiptV1",
+        "parseContextPackPreviewV1",
+        "parseContextPackRedactionMapV1",
+        "parseContextPackSelectionV1"
+      ],
+      "types": [
+        "ContextPackBuildReceiptV1",
+        "ContextPackPreviewV1",
+        "ContextPackRedactionDecisionV1",
+        "ContextPackRedactionMapV1",
+        "ContextPackResourcePreviewV1",
+        "ContextPackSelectionV1"
+      ]
+    },
+    "lib/coven-paths": {
+      "production": true,
+      "values": [
+        "caveHome"
+      ],
+      "types": []
+    },
+    "lib/server/atomic-write": {
+      "production": true,
+      "values": [
+        "writeFileAtomic",
+        "writeJsonAtomic"
+      ],
+      "types": []
+    },
+    "lib/server/corrupt-aside": {
+      "production": true,
+      "values": [
+        "corruptAsidePath"
+      ],
+      "types": []
+    },
+    "lib/server/process-intent-lock": {
+      "production": true,
+      "values": [
+        "acquireProcessIntentLock",
+        "withProcessIntentLock"
+      ],
+      "types": []
+    },
+    "lib/cave-projects": {
+      "production": true,
+      "values": [
+        "createProject",
+        "deleteProject",
+        "loadProjects",
+        "projectForRoot"
+      ],
+      "types": [
+        "CaveProject"
+      ]
+    },
+    "lib/project-permissions": {
+      "production": true,
+      "values": [
+        "ProjectAccessDeniedError",
+        "assertProjectRootAccess",
+        "createAccessGroup",
+        "effectiveProjectAccess",
+        "grantProjectToFamiliar",
+        "listProjectGrants",
+        "loadProjectPermissions",
+        "revokeAllGrantsForProject"
+      ],
+      "types": []
+    },
+    "lib/project-access-levels": {
+      "production": true,
+      "values": [
+        "accessLevelSatisfies",
+        "maxAccessLevel",
+        "normalizeAccessLevel"
+      ],
+      "types": [
+        "ProjectAccessLevel"
+      ]
+    },
+    "lib/server/x-article-content-sha": {
+      "production": false,
+      "values": [
+        "xArticleContentSha256"
+      ],
+      "types": []
+    },
+    "lib/vault": {
+      "production": true,
+      "values": [
+        "resolveSecret"
+      ],
+      "types": []
+    },
+    "lib/voice/speech-models": {
+      "production": true,
+      "values": [
+        "speechEnginesReadiness",
+        "speechModelById",
+        "withSpeechModelUse"
+      ],
+      "types": [
+        "SpeechModelReadiness"
+      ]
+    },
+    "lib/server/research-session-authority": {
+      "production": true,
+      "values": [
+        "parseResearchSessionAuthority"
+      ],
+      "types": [
+        "ResearchSessionAuthority",
+        "ResearchSessionOwnerKind"
+      ]
+    },
+    "lib/flows": {
+      "production": true,
+      "values": [],
+      "types": [
+        "FlowRunRecord"
+      ]
+    },
+    "lib/server/research-launch-policy": {
+      "production": true,
+      "values": [],
+      "types": [
+        "ResearchSessionLaunchDiagnostic"
+      ]
+    },
+    "lib/cave-conversations": {
+      "production": true,
+      "values": [
+        "loadConversation"
+      ],
+      "types": [
+        "ConversationFile"
+      ]
+    },
+    "lib/flow/flow-doc": {
+      "production": true,
+      "values": [],
+      "types": [
+        "FlowDoc"
+      ]
+    },
+    "lib/automation-runs": {
+      "production": true,
+      "values": [],
+      "types": [
+        "AutomationRunRecord"
+      ]
+    },
+    "lib/utf16": {
+      "production": true,
+      "values": [
+        "hasUnpairedUtf16Surrogate"
+      ],
+      "types": []
+    },
+    "lib/server/daemon-session-error": {
+      "production": true,
+      "values": [
+        "daemonSessionAlreadyGone"
+      ],
+      "types": []
+    },
+    "lib/research-mission-flow": {
+      "production": true,
+      "values": [
+        "buildResearchMissionFlow"
+      ],
+      "types": []
+    },
+    "lib/server/research-mission-lock": {
+      "production": true,
+      "values": [
+        "withResearchMissionActionLock"
+      ],
+      "types": []
+    },
+    "lib/server/research-mission-x-runtime": {
+      "production": true,
+      "values": [
+        "ResearchMissionXHydrationError",
+        "dropMissionXRuntime",
+        "hydrateMissionXSources",
+        "mergeXSourceRefs",
+        "researchMissionHoldsXRuntime"
+      ],
+      "types": [
+        "ResearchMissionXHydration"
+      ]
+    },
+    "lib/server/flow-copilot-session": {
+      "production": true,
+      "values": [
+        "cancelCopilotFlowRun",
+        "isCopilotFlowRunActive"
+      ],
+      "types": []
+    },
+    "lib/coven-daemon": {
+      "production": true,
+      "values": [
+        "callDaemon",
+        "callDaemonTarget"
+      ],
+      "types": []
+    },
+    "lib/server/flow-attention": {
+      "production": true,
+      "values": [
+        "emitResearchMissionAttention"
+      ],
+      "types": []
+    },
+    "lib/server/flow-executor": {
+      "production": true,
+      "values": [
+        "startFlowSession"
+      ],
+      "types": []
+    },
+    "lib/server/flow-store": {
+      "production": true,
+      "values": [
+        "listFlowRuns"
+      ],
+      "types": []
+    },
+    "lib/server/flow-session-transcript": {
+      "production": true,
+      "values": [
+        "flowSessionTranscript"
+      ],
+      "types": []
+    },
+    "lib/codex-automations": {
+      "production": true,
+      "values": [
+        "createCodexAutomation",
+        "getCodexAutomation",
+        "updateCodexAutomation"
+      ],
+      "types": []
+    },
+    "lib/server/coven-automations-client": {
+      "production": true,
+      "values": [
+        "listRoutineRuns"
+      ],
+      "types": []
+    },
+    "lib/server/coven-stream-text": {
+      "production": true,
+      "values": [
+        "assistantTextFromStream"
+      ],
+      "types": []
+    },
+    "lib/cave-config": {
+      "production": true,
+      "values": [
+        "bindingFor",
+        "loadConfig"
+      ],
+      "types": []
+    },
+    "lib/server/coven-oneshot": {
+      "production": true,
+      "values": [
+        "runCovenOneShot"
+      ],
+      "types": []
+    },
+    "lib/voice/local-tts-server": {
+      "production": true,
+      "values": [
+        "runKokoro",
+        "runPiper"
+      ],
+      "types": []
+    },
+    "lib/voice/local-tts": {
+      "production": true,
+      "values": [
+        "LOCAL_TTS_MAX_CHARS"
+      ],
+      "types": []
+    },
+    "lib/server/research-links-legacy-store": {
+      "production": false,
+      "values": [
+        "writeResearchLinksVerified"
+      ],
+      "types": []
+    },
+    "lib/server/research-resource-recovery": {
+      "production": true,
+      "values": [
+        "recoverInterruptedResearchResourceRestore"
+      ],
+      "types": []
+    },
+    "lib/server/research-resource-lexical-index": {
+      "production": true,
+      "values": [
+        "chunkResearchResourceUtf8",
+        "openResearchResourceLexicalIndex",
+        "RESEARCH_LEXICAL_CHUNKER_VERSION"
+      ],
+      "types": [
+        "ResearchLexicalAuthority",
+        "ResearchLexicalSearchHit",
+        "ResearchResourceLexicalIndex"
+      ]
+    },
+    "lib/server/research-resource-maintenance": {
+      "production": true,
+      "values": [
+        "createResearchResourceMaintenance"
+      ],
+      "types": [
+        "ResearchResourceMaintenanceOptions"
+      ]
+    },
+    "lib/server/research-resource-state": {
+      "production": true,
+      "values": [
+        "authority",
+        "deletionRevision",
+        "laterTimestamp",
+        "manifestById",
+        "nextManifest",
+        "stableId"
+      ],
+      "types": []
+    },
+    "lib/server/research-resource-semantic-index": {
+      "production": true,
+      "values": [
+        "ResearchResourceSemanticIndexError",
+        "openResearchResourceSemanticIndex",
+        "rebuildResearchResourceSemanticIndex",
+        "researchResourceSemanticIndexPath"
+      ],
+      "types": [
+        "ResearchResourceSemanticIndex",
+        "ResearchSemanticAuthority",
+        "ResearchSemanticProbe"
+      ]
+    },
+    "lib/server/familiar-reminder-route": {
+      "production": true,
+      "values": [
+        "requireFamiliar"
+      ],
+      "types": []
+    },
+    "lib/server/client-v1/path-ownership": {
+      "production": true,
+      "values": [
+        "assertExclusivePathOwnershipSync"
+      ],
+      "types": []
+    },
+    "lib/server/sessions-list": {
+      "production": true,
+      "values": [
+        "computeSessionsList"
+      ],
+      "types": []
+    },
+    "lib/server/sessions-list-cache": {
+      "production": true,
+      "values": [
+        "sessionsListCache"
+      ],
+      "types": []
+    },
+    "lib/server/saved-links-route": {
+      "production": true,
+      "values": [
+        "createResearchLinksRouteHandlers"
+      ],
+      "types": []
+    },
+    "lib/collect-saved-link-urls": {
+      "production": true,
+      "values": [
+        "collectIngestUrls"
+      ],
+      "types": []
+    }
+  }
+}
