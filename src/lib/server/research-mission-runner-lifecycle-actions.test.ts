@@ -55,6 +55,29 @@ test("Research cancellation uses the daemon only when no direct owner exists", a
   assert.deepEqual(calls, ["POST:/api/v1/sessions/daemon%2Fsession/kill"]);
 });
 
+test("settled direct ownership never falls through to an offline daemon", async () => {
+  // Core Flow tests prove natural process exit records this tombstone. Exercise
+  // the package against the real host cancellation registry, without a mock
+  // cancelDirect hiding a broken host/package ownership boundary.
+  const registry = globalThis.__covenCaveFinishedCopilotFlowRuns ??= new Map();
+  const sessionId = "research-package-settled-direct-run";
+  const previous = registry.get(sessionId);
+  registry.set(sessionId, Date.now() + 60_000);
+  let daemonCalls = 0;
+  try {
+    await cancelResearchSession(sessionId, {
+      callDaemonImpl: async () => {
+        daemonCalls++;
+        return { ok: false, status: 0, error: "offline" };
+      },
+    });
+    assert.equal(daemonCalls, 0, "settled direct ownership never falls through to an offline daemon");
+  } finally {
+    if (previous === undefined) registry.delete(sessionId);
+    else registry.set(sessionId, previous);
+  }
+});
+
 test("Research cancellation stays on its persisted owner-local daemon authority", async () => {
   const calls: string[] = [];
   const authority = { kind: "owner-local-daemon" as const, socketPath: "/tmp/coven-original.sock" };

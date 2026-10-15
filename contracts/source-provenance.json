@@ -848,5 +848,35 @@
   ],
   "additionalExtractedTests": [
     "src/lib/server/research-resource-embedding-provider.test.ts"
+  ],
+  "splitHostTestContracts": [
+    {
+      "host": "src/components/windows-shortcut-hints.test.ts",
+      "package": "scripts/windows-shortcut-hints.test.ts"
+    },
+    {
+      "host": "src/lib/podcast-script.test.ts",
+      "package": "scripts/podcast-studio-contract.test.ts"
+    },
+    {
+      "host": "scripts/cross-environment.test.ts",
+      "package": "scripts/media-open-flags.test.ts"
+    },
+    {
+      "host": "src/lib/server/flow-executor.test.ts",
+      "package": "scripts/flow-launch-contract.test.ts"
+    },
+    {
+      "host": "src/lib/server/flow-copilot-session.test.ts",
+      "package": "src/lib/server/research-mission-runner-lifecycle-actions.test.ts"
+    },
+    {
+      "host": "scripts/turbopack-runtime-boundaries.test.mjs",
+      "package": "scripts/turbopack-runtime-boundaries.test.mjs"
+    },
+    {
+      "host": "scripts/pdf-worker-asset.test.mjs",
+      "package": "scripts/pdf-worker-contract.test.mjs"
+    }
   ]
 }
