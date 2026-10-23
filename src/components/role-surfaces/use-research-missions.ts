@@ -229,7 +229,8 @@ export function useResearchMissions(familiarId: string) {
     try {
       const result = action === "run-now"
         ? await runResearchAutomationNow(automationId)
-        : await setResearchAutomationStatus(automationId, action === "resume" ? "ACTIVE" : "PAUSED");
+        : await setResearchAutomationStatus(automationId, action === "resume" ? "ACTIVE" : "PAUSED",
+          state.missions.find(mission => mission.id === missionId && mission.automation?.id === automationId)?.automation?.revision);
       if (!result.ok) {
         return { ok: false as const, error: result.error ?? "Automation action failed" };
       }
@@ -243,6 +244,7 @@ export function useResearchMissions(familiarId: string) {
               ...mission.automation,
               status: action === "resume" ? "ACTIVE" : "PAUSED",
               stopReason: undefined,
+              ...("revision" in result && typeof result.revision === "number" ? { revision: result.revision } : {}),
             },
           } : mission),
         }));
@@ -253,7 +255,7 @@ export function useResearchMissions(familiarId: string) {
       // Transport failure resolves to the same failure shape the API returns.
       return { ok: false as const, error: "Automation action failed" };
     }
-  }, [load]);
+  }, [load, state.missions]);
 
   return {
     ...state,

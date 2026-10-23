@@ -149,6 +149,7 @@ type ResearchAutomationRecord = Pick<ResearchAutomationLink, "id" | "status"> & 
 type ResearchAutomationContext = { missionId: string; automationId: string; adoptionKey: string };
 
 type ResearchAutomationCreateInput = {
+  timezone?: string;
   name: string;
   rrule: string;
   prompt: string;
@@ -1579,12 +1580,14 @@ export function makeResearchMissionRunner(deps: ResearchMissionRunnerDeps) {
     const storedAutomation = await deps.getAutomation(automation.id);
     if (!storedAutomation) throw Object.assign(new Error("Import this legacy Research automation into Coven explicitly before reconciling it."), { code: "research-automation-import-required" });
     if (storedAutomation && (
+      storedAutomation.revision !== automation.revision ||
       storedAutomation.status !== automation.status ||
       (storedAutomation.rrule && storedAutomation.rrule !== automation.rrule)
     )) {
       automation = {
         ...automation,
         status: storedAutomation.status,
+        revision: storedAutomation.revision,
         rrule: storedAutomation.rrule ?? automation.rrule,
         ...(storedAutomation.status === "ACTIVE" ? { stopReason: undefined } : {}),
       };
@@ -2138,36 +2141,59 @@ export function makeResearchMissionRunner(deps: ResearchMissionRunnerDeps) {
         }
         const stopReason = stopBeforeNextIteration(mission, deps.now());
         if (stopReason) throw new Error(stopReason);
-        const workspace = deps.missionWorkspacePath(id);
-        const [checkpointFingerprint, checkpoint] = await Promise.all([
-          deps.fingerprintMission(id),
-          deps.readAutomationCheckpoint(id),
-        ]);
-        const created = await deps.createAutomation({
-          name: `Research: ${mission.title}`,
-          rrule,
-          prompt: automationPrompt(mission, workspace),
-          cwds: [workspace],
-          tags: ["research-mission", `research-mission:${mission.id}`],
-          familiars: [mission.familiarId],
-          model: input.model?.trim() ?? "",
-          reasoningEffort: input.reasoningEffort?.trim() ?? "",
-          executionEnvironment: input.executionEnvironment?.trim() ?? "",
-          skillPath: input.skillPath?.trim() || null,
-        }, {
-          missionId: mission.id,
-          automationId: `research-${mission.id}`,
-          adoptionKey: `research-create:${mission.id}`,
-        });
+        const requested = {
+          rrule, model: input.model?.trim() ?? "", reasoningEffort: input.reasoningEffort?.trim() ?? "",
+          executionEnvironment: input.executionEnvironment?.trim() ?? "", skillPath: input.skillPath?.trim() || null,
+        };
+        const request = JSON.stringify(requested);
+        let attempt = mission.automationScheduleAttempt;
+        if (attempt?.state === "pending" && attempt.request !== request) {
+          throw Object.assign(new Error("The previous schedule request is unresolved. Retry its original settings before changing the schedule."), { code: "research-schedule-outcome-unresolved" });
+        }
+        if (!attempt || attempt.state === "rejected") {
+          const workspace = deps.missionWorkspacePath(id);
+          const [checkpointFingerprint, checkpoint] = await Promise.all([
+            deps.fingerprintMission(id), deps.readAutomationCheckpoint(id),
+          ]);
+          attempt = {
+            generation: (attempt?.generation ?? 0) + 1, state: "pending", request,
+            input: {
+              ...requested, name: `Research: ${mission.title}`, prompt: automationPrompt(mission, workspace),
+              cwds: [workspace], tags: ["research-mission", `research-mission:${mission.id}`], familiars: [mission.familiarId],
+              timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            },
+            checkpointFingerprint, ...(checkpoint.token ? { checkpointToken: checkpoint.token } : {}),
+          };
+          // Persist the exact payload before it can reach Coven. A failed save
+          // sends nothing; a lost reply reuses this body even after edits/restart.
+          await saveMission({ ...mission, automationScheduleAttempt: attempt });
+        }
+        let created: ResearchAutomationRecord;
+        try {
+          created = await deps.createAutomation(attempt.input, {
+            missionId: mission.id, automationId: `research-${mission.id}`,
+            adoptionKey: `research-create:${mission.id}:${attempt.generation}`,
+          });
+        } catch (error) {
+          if (error && typeof error === "object" && "definitiveRejection" in error && error.definitiveRejection === true) {
+            await saveMission({ ...mission, automationScheduleAttempt: { ...attempt, state: "rejected" } });
+          }
+          throw error;
+        }
+        if (created.id !== `research-${mission.id}` || created.status !== "PAUSED" || !Number.isSafeInteger(created.revision) || created.revision! < 1) {
+          throw Object.assign(new Error("Coven has not confirmed the paused Research schedule. Retry the original request."), { code: "research-schedule-unconfirmed" });
+        }
         const updated: ResearchMission = {
           ...mission,
+          automationScheduleAttempt: undefined,
           automationId: created.id,
           automation: {
             id: created.id,
-            rrule,
+            revision: created.revision,
+            rrule: created.rrule ?? rrule,
             status: "PAUSED",
-            checkpointFingerprint,
-            ...(checkpoint.token ? { checkpointToken: checkpoint.token } : {}),
+            checkpointFingerprint: attempt.checkpointFingerprint,
+            ...(attempt.checkpointToken ? { checkpointToken: attempt.checkpointToken } : {}),
           },
           updatedAt: deps.now().toISOString(),
         };
