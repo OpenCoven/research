@@ -1,5 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { mkdtemp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
 import type { AutomationRunRecord } from "@opencoven/research-host-test/lib/automation-runs";
 import type { FlowRunRecord } from "@opencoven/research-host-test/lib/flows";
 import type { ResearchMission } from "@opencoven/research-host-test/lib/research-missions";
@@ -63,7 +66,7 @@ function deps(overrides: Partial<ResearchMissionRunnerDeps> = {}): ResearchMissi
       status: patch.status ?? "PAUSED",
       rrule: null,
     }),
-    getAutomation: async () => null,
+    getAutomation: async (id) => ({ id, status: "ACTIVE", rrule: null, revision: 1 }),
     latestAutomationRun: async () => null,
     readAutomationTranscript: async () => "",
     readAutomationCheckpoint: async () => ({ transcript: "", token: "", at: NOW.toISOString() }),
@@ -401,7 +404,7 @@ test("terminal actions pause Automation truth even when mission metadata is stal
   const runner = makeResearchMissionRunner(deps({
     loadMission: async () => structuredClone(stored),
     saveMission: async (mission) => { stored = structuredClone(mission); },
-    getAutomation: async () => ({ id: "automation-1", status: "ACTIVE", rrule: stored.automation!.rrule }),
+    getAutomation: async () => ({ id: "automation-1", status: "ACTIVE", rrule: stored.automation!.rrule, revision: 1 }),
     updateAutomation: async (id, patch) => {
       updates.push(`${id}:${patch.status}`);
       return { id, status: patch.status ?? "PAUSED", rrule: null };
@@ -438,6 +441,7 @@ test("a consumed automation run with an unchanged checkpoint file is a no-op on 
   const updates: string[] = [];
   const runner = makeResearchMissionRunner(deps({
     saveMission: async (mission) => { saves += 1; stored = structuredClone(mission); },
+    getAutomation: async (id) => ({ id, status: stored.automation!.status, rrule: stored.automation!.rrule, revision: 1 }),
     latestAutomationRun: async () => run,
     readAutomationTranscript: async () => [
       "@@research-control",
@@ -488,6 +492,7 @@ test("the automation pause path persists the observed checkpoint token", async (
   const updates: string[] = [];
   const runner = makeResearchMissionRunner(deps({
     saveMission: async (mission) => { saves += 1; stored = structuredClone(mission); },
+    getAutomation: async (id) => ({ id, status: stored.automation!.status, rrule: stored.automation!.rrule, revision: 1 }),
     latestAutomationRun: async () => run,
     readAutomationTranscript: async () => "run completed without control output",
     readAutomationCheckpoint: async () => ({ transcript: "", token: "token-2", at: NOW.toISOString() }),
@@ -534,6 +539,7 @@ test("a late automation run cannot resurrect a terminal mission", async () => {
   const published: string[] = [];
   const runner = makeResearchMissionRunner(deps({
     saveMission: async (mission) => { saves += 1; stored = structuredClone(mission); },
+    getAutomation: async (id) => ({ id, status: stored.automation!.status, rrule: stored.automation!.rrule, revision: 1 }),
     latestAutomationRun: async () => run,
     readAutomationTranscript: async () => [
       "@@research-control",
@@ -697,3 +703,122 @@ test("an unreadable mission fingerprint consumes the run as unchanged instead of
   assert.match(result.automation?.stopReason ?? "", /did not change the mission checkpoint/);
   assert.equal(result.iterations.length, 1, "no iteration may be built on unreadable evidence");
 });
+
+
+test("schedule retry after a lost reply retains automation identity and adoption key", async () => {
+  const stored = checkpointMission();
+  const contexts: unknown[] = [];
+  const runner = makeResearchMissionRunner(deps({
+    loadMission: async () => structuredClone(stored),
+    createAutomation: async (_input, context) => {
+      contexts.push(context);
+      throw Object.assign(new Error("reply lost"), { code: "outcome_unknown" });
+    },
+  }));
+  for (let n = 0; n < 2; n++) {
+    await assert.rejects(runner.schedule(stored.id, { rrule: "RRULE:FREQ=DAILY;BYHOUR=9" }), { code: "outcome_unknown" });
+  }
+  assert.deepEqual(contexts, [
+    { missionId: "mission-actions", automationId: "research-mission-actions", adoptionKey: "research-create:mission-actions" },
+    { missionId: "mission-actions", automationId: "research-mission-actions", adoptionKey: "research-create:mission-actions" },
+  ]);
+});
+
+test("cancel submits the observed definition revision and preserves mission state on conflict", async () => {
+  const stored = checkpointMission({ automation: { id: "imported-id", status: "ACTIVE", rrule: "RRULE:FREQ=DAILY;BYHOUR=9", checkpointFingerprint: "before" } });
+  let saves = 0;
+  let received: unknown;
+  const runner = makeResearchMissionRunner(deps({
+    loadMission: async () => structuredClone(stored),
+    saveMission: async () => { saves++; },
+    getAutomation: async () => ({ id: "imported-id", status: "ACTIVE", rrule: stored.automation!.rrule, revision: 7 }),
+    updateAutomation: async (_id, _patch, context) => {
+      received = context;
+      throw Object.assign(new Error("revision conflict"), { code: "REVISION_CONFLICT" });
+    },
+  }));
+  await assert.rejects(runner.act(stored.id, { action: "cancel" }), { code: "REVISION_CONFLICT" });
+  assert.deepEqual(received, { missionId: "mission-actions", automationId: "imported-id", expectedRevision: 7, adoptionKey: "research-pause:imported-id:7" });
+  assert.equal(saves, 0);
+  assert.equal(stored.automation?.status, "ACTIVE");
+});
+
+
+test("reconciliation refuses a missing legacy definition without changing mission state", async () => {
+  const stored = checkpointMission({ automation: { id: "legacy-id", status: "ACTIVE", rrule: "RRULE:FREQ=DAILY;BYHOUR=9" } });
+  let saves = 0;
+  let runs = 0;
+  const runner = makeResearchMissionRunner(deps({
+    loadMission: async () => structuredClone(stored),
+    saveMission: async () => { saves += 1; },
+    getAutomation: async () => null,
+    latestAutomationRun: async () => { runs += 1; return null; },
+  }));
+  await assert.rejects(runner.reconcileAutomation(stored), { code: "research-automation-import-required" });
+  assert.equal(saves, 0);
+  assert.equal(runs, 0);
+});
+
+
+for (const operation of ["schedule", "reconcile", "cancel"] as const) {
+  test(`actual Research runner and Cave host refuse offline ${operation} without legacy access`, async () => {
+    const root = await mkdtemp(path.join(os.tmpdir(), "research-host-boundary-"));
+    const previousHome = process.env.HOME;
+    const previousCovenHome = process.env.COVEN_HOME;
+    const previousSocket = process.env.COVEN_SOCKET;
+    try {
+      process.env.HOME = root;
+      process.env.COVEN_HOME = path.join(root, "coven");
+      delete process.env.COVEN_SOCKET;
+      const legacy = path.join(root, ".codex", "automations");
+      const source = path.join(legacy, "legacy-id", "automation.toml");
+      await mkdir(path.dirname(source), { recursive: true });
+      const original = 'version = "1"\nid = "legacy-id"\nname = "Legacy Research"\nstatus = "ACTIVE"\nrrule = "RRULE:FREQ=DAILY;BYHOUR=9"\nprompt = "Preserve this source"\n';
+      await writeFile(source, original);
+      const host = await import("@opencoven/research-host/lib/codex-automations");
+      const mission = checkpointMission(operation === "schedule" ? {} : {
+        automation: { id: "legacy-id", status: "ACTIVE", rrule: "RRULE:FREQ=DAILY;BYHOUR=9" },
+      });
+      let saves = 0;
+      const runner = makeResearchMissionRunner(deps({
+        loadMission: async () => structuredClone(mission),
+        saveMission: async () => { saves += 1; },
+        createAutomation: host.createCodexAutomation,
+        getAutomation: host.getCodexAutomation,
+        updateAutomation: host.updateCodexAutomation,
+      }));
+      await assert.rejects(operation === "schedule"
+        ? runner.schedule(mission.id, { rrule: "RRULE:FREQ=DAILY;BYHOUR=9" })
+        : operation === "reconcile" ? runner.reconcileAutomation(mission)
+        : runner.act(mission.id, { action: "cancel" }), { code: "unavailable" });
+      assert.equal(saves, 0);
+      assert.equal(await readFile(source, "utf8"), original);
+      assert.deepEqual(await readdir(legacy), ["legacy-id"]);
+    } finally {
+      for (const [key, value] of [["HOME", previousHome], ["COVEN_HOME", previousCovenHome], ["COVEN_SOCKET", previousSocket]]) {
+        if (value === undefined) delete process.env[key!];
+        else process.env[key!] = value;
+      }
+      await rm(root, { recursive: true, force: true });
+    }
+  });
+}
+
+for (const operation of ["schedule", "reconcile", "cancel"] as const) {
+  test(`${operation} refuses an ambiguous legacy mission link without replacing its id`, async () => {
+    const mission = checkpointMission({ automationId: "original-legacy-id" });
+    let writes = 0;
+    const runner = makeResearchMissionRunner(deps({
+      loadMission: async () => structuredClone(mission),
+      saveMission: async () => { writes += 1; },
+      createAutomation: async () => { writes += 1; throw new Error("must not create replacement"); },
+      updateAutomation: async () => { writes += 1; throw new Error("must not mutate ambiguous definition"); },
+    }));
+    await assert.rejects(operation === "schedule"
+      ? runner.schedule(mission.id, { rrule: "RRULE:FREQ=DAILY;BYHOUR=9" })
+      : operation === "reconcile" ? runner.reconcileAutomation(mission)
+      : runner.act(mission.id, { action: "cancel" }), { code: "research-automation-link-review-required" });
+    assert.equal(writes, 0);
+    assert.equal(mission.automationId, "original-legacy-id");
+  });
+}

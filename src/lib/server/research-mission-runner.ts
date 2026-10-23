@@ -143,7 +143,10 @@ export type ResearchAutomationScheduleInput = {
 
 type ResearchAutomationRecord = Pick<ResearchAutomationLink, "id" | "status"> & {
   rrule: string | null;
+  revision?: number;
 };
+
+type ResearchAutomationContext = { missionId: string; automationId: string; adoptionKey: string };
 
 type ResearchAutomationCreateInput = {
   name: string;
@@ -237,11 +240,12 @@ export type ResearchMissionRunnerDeps = {
     authority?: ResearchSessionAuthority,
     ownerKind?: ResearchMissionSessionOwner["ownerKind"],
   ): Promise<void>;
-  createAutomation(input: ResearchAutomationCreateInput): Promise<ResearchAutomationRecord>;
+  createAutomation(input: ResearchAutomationCreateInput, context: ResearchAutomationContext): Promise<ResearchAutomationRecord>;
   getAutomation(id: string): Promise<ResearchAutomationRecord | null>;
   updateAutomation(
     id: string,
     patch: { status?: "ACTIVE" | "PAUSED" },
+    context: ResearchAutomationContext & { expectedRevision: number },
   ): Promise<ResearchAutomationRecord | null>;
   latestAutomationRun(id: string): Promise<AutomationRunRecord | null>;
   readAutomationTranscript(run: AutomationRunRecord): Promise<string>;
@@ -1151,12 +1155,35 @@ export function makeResearchMissionRunner(deps: ResearchMissionRunnerDeps) {
     return persistLaunchResult(next, result);
   };
 
+  const assertAutomationLink = (mission: ResearchMission): void => {
+    if (mission.automationId && mission.automationId !== mission.automation?.id) {
+      throw Object.assign(new Error("Review the existing Research automation link before scheduling, reconciliation or cancellation; its original ID is preserved."), { code: "research-automation-link-review-required" });
+    }
+  };
+
+  const pauseInCoven = async (missionId: string, automationId: string): Promise<void> => {
+    const current = await deps.getAutomation(automationId);
+    if (!current) throw Object.assign(new Error("Import this legacy Research automation into Coven explicitly before changing it."), { code: "research-automation-import-required" });
+    if (current.id !== automationId || !Number.isSafeInteger(current.revision) || current.revision! < 1) {
+      throw Object.assign(new Error("Coven did not provide a usable Research automation revision."), { code: "research-automation-revision-required" });
+    }
+    if (current.status === "PAUSED") return;
+    const result = await deps.updateAutomation(automationId, { status: "PAUSED" }, {
+      missionId, automationId, expectedRevision: current.revision!,
+      adoptionKey: `research-pause:${automationId}:${current.revision}`,
+    });
+    if (!result || result.status !== "PAUSED" || result.id !== automationId) {
+      throw Object.assign(new Error("Coven has not confirmed that the Research automation is paused."), { code: "research-automation-pause-unconfirmed" });
+    }
+  };
+
   const pauseAutomation = async (
     mission: ResearchMission,
     reason: string,
   ): Promise<ResearchMission> => {
+    assertAutomationLink(mission);
     if (!mission.automation) return mission;
-    await deps.updateAutomation(mission.automation.id, { status: "PAUSED" });
+    await pauseInCoven(mission.id, mission.automation.id);
     return {
       ...mission,
       automation: {
@@ -1517,7 +1544,7 @@ export function makeResearchMissionRunner(deps: ResearchMissionRunnerDeps) {
   ): Promise<ResearchMission> => {
     const automation = mission.automation;
     if (!automation) return mission;
-    await deps.updateAutomation(automation.id, { status: "PAUSED" });
+    await pauseInCoven(mission.id, automation.id);
     const updated: ResearchMission = {
       ...mission,
       status: mission.status === "running" ? "checkpoint" : mission.status,
@@ -1546,9 +1573,11 @@ export function makeResearchMissionRunner(deps: ResearchMissionRunnerDeps) {
     // write that projection back over the terminal mission on disk.
     if (await deps.loadSessionOwner(currentMission.id)) return currentMission;
     let mission = currentMission;
+    assertAutomationLink(mission);
     let automation = mission.automation;
     if (!automation) return mission;
     const storedAutomation = await deps.getAutomation(automation.id);
+    if (!storedAutomation) throw Object.assign(new Error("Import this legacy Research automation into Coven explicitly before reconciling it."), { code: "research-automation-import-required" });
     if (storedAutomation && (
       storedAutomation.status !== automation.status ||
       (storedAutomation.rrule && storedAutomation.rrule !== automation.rrule)
@@ -1733,7 +1762,7 @@ export function makeResearchMissionRunner(deps: ResearchMissionRunnerDeps) {
       stopReason = "Checkpoint review required";
     }
     if (stopReason) {
-      await deps.updateAutomation(automation.id, { status: "PAUSED" });
+      await pauseInCoven(mission.id, automation.id);
       status = stopReason === "Iteration limit reached" || control.decision === "complete"
         ? "completed"
         : stopReason === "Checkpoint review required"
@@ -2101,6 +2130,7 @@ export function makeResearchMissionRunner(deps: ResearchMissionRunnerDeps) {
         if (TERMINAL_RESEARCH_MISSION_STATUSES.includes(mission.status)) {
           throw new Error(`cannot schedule a ${mission.status} research mission`);
         }
+        assertAutomationLink(mission);
         if (mission.automation) throw new Error("research mission already has a schedule");
         const rrule = input.rrule.trim();
         if (!rrule.startsWith("RRULE:") || rrule.length > 500) {
@@ -2124,6 +2154,10 @@ export function makeResearchMissionRunner(deps: ResearchMissionRunnerDeps) {
           reasoningEffort: input.reasoningEffort?.trim() ?? "",
           executionEnvironment: input.executionEnvironment?.trim() ?? "",
           skillPath: input.skillPath?.trim() || null,
+        }, {
+          missionId: mission.id,
+          automationId: `research-${mission.id}`,
+          adoptionKey: `research-create:${mission.id}`,
         });
         const updated: ResearchMission = {
           ...mission,
@@ -2400,17 +2434,17 @@ export function makeProductionResearchMissionRunner() {
           : undefined,
       );
     },
-    createAutomation: async (input) => {
+    createAutomation: async (input, context) => {
       const { createCodexAutomation } = await import("@opencoven/research-host/lib/codex-automations");
-      return createCodexAutomation(input);
+      return createCodexAutomation(input, context);
     },
     getAutomation: async (id) => {
       const { getCodexAutomation } = await import("@opencoven/research-host/lib/codex-automations");
       return getCodexAutomation(id);
     },
-    updateAutomation: async (id, patch) => {
+    updateAutomation: async (id, patch, context) => {
       const { updateCodexAutomation } = await import("@opencoven/research-host/lib/codex-automations");
-      return updateCodexAutomation(id, patch);
+      return updateCodexAutomation(id, patch, context);
     },
     latestAutomationRun: async (id) => {
       const { listRoutineRuns } = await import("@opencoven/research-host/lib/server/coven-automations-client");
