@@ -18,7 +18,7 @@ const ledger = readFileSync(new URL("./research-evidence-ledger.tsx", import.met
 const hook = readFileSync(new URL("./use-research-missions.ts", import.meta.url), "utf8");
 const clientLib = readFileSync(hostSourceUrl("src/lib/research-mission-client.ts"), "utf8");
 const missionsLib = readFileSync(hostSourceUrl("src/lib/research-missions.ts"), "utf8");
-const surfaceCss = [
+const surfaceCss = readFileSync(hostSourceUrl("src/styles/research-room.css"), "utf8") + "\n" + [
   "../../styles/globals/surface-role-workspaces.css",
   "../../styles/globals/surface-research-desk.css",
   "../../styles/globals/surface-research-prompt.css",

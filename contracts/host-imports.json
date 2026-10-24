@@ -4997,6 +4997,20 @@
       "symbols": {
         "collectIngestUrls": "value"
       }
+    },
+    "lib/server/research-automation-import": {
+      "source": "src/lib/server/research-automation-import.ts",
+      "imports": [
+        {
+          "file": "src/lib/server/research-mission-runner-automation-scheduling.test.ts",
+          "test": true,
+          "typeOnly": false,
+          "dynamic": true
+        }
+      ],
+      "symbols": {
+        "createResearchLegacyImporter": "value"
+      }
     }
   }
 }

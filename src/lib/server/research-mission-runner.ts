@@ -143,9 +143,13 @@ export type ResearchAutomationScheduleInput = {
 
 type ResearchAutomationRecord = Pick<ResearchAutomationLink, "id" | "status"> & {
   rrule: string | null;
+  revision?: number;
 };
 
+type ResearchAutomationContext = { missionId: string; automationId: string; adoptionKey: string };
+
 type ResearchAutomationCreateInput = {
+  timezone?: string;
   name: string;
   rrule: string;
   prompt: string;
@@ -237,11 +241,12 @@ export type ResearchMissionRunnerDeps = {
     authority?: ResearchSessionAuthority,
     ownerKind?: ResearchMissionSessionOwner["ownerKind"],
   ): Promise<void>;
-  createAutomation(input: ResearchAutomationCreateInput): Promise<ResearchAutomationRecord>;
+  createAutomation(input: ResearchAutomationCreateInput, context: ResearchAutomationContext): Promise<ResearchAutomationRecord>;
   getAutomation(id: string): Promise<ResearchAutomationRecord | null>;
   updateAutomation(
     id: string,
     patch: { status?: "ACTIVE" | "PAUSED" },
+    context: ResearchAutomationContext & { expectedRevision: number },
   ): Promise<ResearchAutomationRecord | null>;
   latestAutomationRun(id: string): Promise<AutomationRunRecord | null>;
   readAutomationTranscript(run: AutomationRunRecord): Promise<string>;
@@ -1151,12 +1156,35 @@ export function makeResearchMissionRunner(deps: ResearchMissionRunnerDeps) {
     return persistLaunchResult(next, result);
   };
 
+  const assertAutomationLink = (mission: ResearchMission): void => {
+    if (mission.automationId && mission.automationId !== mission.automation?.id) {
+      throw Object.assign(new Error("Review the existing Research automation link before scheduling, reconciliation or cancellation; its original ID is preserved."), { code: "research-automation-link-review-required" });
+    }
+  };
+
+  const pauseInCoven = async (missionId: string, automationId: string): Promise<void> => {
+    const current = await deps.getAutomation(automationId);
+    if (!current) throw Object.assign(new Error("Import this legacy Research automation into Coven explicitly before changing it."), { code: "research-automation-import-required" });
+    if (current.id !== automationId || !Number.isSafeInteger(current.revision) || current.revision! < 1) {
+      throw Object.assign(new Error("Coven did not provide a usable Research automation revision."), { code: "research-automation-revision-required" });
+    }
+    if (current.status === "PAUSED") return;
+    const result = await deps.updateAutomation(automationId, { status: "PAUSED" }, {
+      missionId, automationId, expectedRevision: current.revision!,
+      adoptionKey: `research-pause:${automationId}:${current.revision}`,
+    });
+    if (!result || result.status !== "PAUSED" || result.id !== automationId) {
+      throw Object.assign(new Error("Coven has not confirmed that the Research automation is paused."), { code: "research-automation-pause-unconfirmed" });
+    }
+  };
+
   const pauseAutomation = async (
     mission: ResearchMission,
     reason: string,
   ): Promise<ResearchMission> => {
+    assertAutomationLink(mission);
     if (!mission.automation) return mission;
-    await deps.updateAutomation(mission.automation.id, { status: "PAUSED" });
+    await pauseInCoven(mission.id, mission.automation.id);
     return {
       ...mission,
       automation: {
@@ -1517,7 +1545,7 @@ export function makeResearchMissionRunner(deps: ResearchMissionRunnerDeps) {
   ): Promise<ResearchMission> => {
     const automation = mission.automation;
     if (!automation) return mission;
-    await deps.updateAutomation(automation.id, { status: "PAUSED" });
+    await pauseInCoven(mission.id, automation.id);
     const updated: ResearchMission = {
       ...mission,
       status: mission.status === "running" ? "checkpoint" : mission.status,
@@ -1546,16 +1574,20 @@ export function makeResearchMissionRunner(deps: ResearchMissionRunnerDeps) {
     // write that projection back over the terminal mission on disk.
     if (await deps.loadSessionOwner(currentMission.id)) return currentMission;
     let mission = currentMission;
+    assertAutomationLink(mission);
     let automation = mission.automation;
     if (!automation) return mission;
     const storedAutomation = await deps.getAutomation(automation.id);
+    if (!storedAutomation) throw Object.assign(new Error("Import this legacy Research automation into Coven explicitly before reconciling it."), { code: "research-automation-import-required" });
     if (storedAutomation && (
+      storedAutomation.revision !== automation.revision ||
       storedAutomation.status !== automation.status ||
       (storedAutomation.rrule && storedAutomation.rrule !== automation.rrule)
     )) {
       automation = {
         ...automation,
         status: storedAutomation.status,
+        revision: storedAutomation.revision,
         rrule: storedAutomation.rrule ?? automation.rrule,
         ...(storedAutomation.status === "ACTIVE" ? { stopReason: undefined } : {}),
       };
@@ -1733,7 +1765,7 @@ export function makeResearchMissionRunner(deps: ResearchMissionRunnerDeps) {
       stopReason = "Checkpoint review required";
     }
     if (stopReason) {
-      await deps.updateAutomation(automation.id, { status: "PAUSED" });
+      await pauseInCoven(mission.id, automation.id);
       status = stopReason === "Iteration limit reached" || control.decision === "complete"
         ? "completed"
         : stopReason === "Checkpoint review required"
@@ -2101,6 +2133,7 @@ export function makeResearchMissionRunner(deps: ResearchMissionRunnerDeps) {
         if (TERMINAL_RESEARCH_MISSION_STATUSES.includes(mission.status)) {
           throw new Error(`cannot schedule a ${mission.status} research mission`);
         }
+        assertAutomationLink(mission);
         if (mission.automation) throw new Error("research mission already has a schedule");
         const rrule = input.rrule.trim();
         if (!rrule.startsWith("RRULE:") || rrule.length > 500) {
@@ -2108,32 +2141,59 @@ export function makeResearchMissionRunner(deps: ResearchMissionRunnerDeps) {
         }
         const stopReason = stopBeforeNextIteration(mission, deps.now());
         if (stopReason) throw new Error(stopReason);
-        const workspace = deps.missionWorkspacePath(id);
-        const [checkpointFingerprint, checkpoint] = await Promise.all([
-          deps.fingerprintMission(id),
-          deps.readAutomationCheckpoint(id),
-        ]);
-        const created = await deps.createAutomation({
-          name: `Research: ${mission.title}`,
-          rrule,
-          prompt: automationPrompt(mission, workspace),
-          cwds: [workspace],
-          tags: ["research-mission", `research-mission:${mission.id}`],
-          familiars: [mission.familiarId],
-          model: input.model?.trim() ?? "",
-          reasoningEffort: input.reasoningEffort?.trim() ?? "",
-          executionEnvironment: input.executionEnvironment?.trim() ?? "",
-          skillPath: input.skillPath?.trim() || null,
-        });
+        const requested = {
+          rrule, model: input.model?.trim() ?? "", reasoningEffort: input.reasoningEffort?.trim() ?? "",
+          executionEnvironment: input.executionEnvironment?.trim() ?? "", skillPath: input.skillPath?.trim() || null,
+        };
+        const request = JSON.stringify(requested);
+        let attempt = mission.automationScheduleAttempt;
+        if (attempt?.state === "pending" && attempt.request !== request) {
+          throw Object.assign(new Error("The previous schedule request is unresolved. Retry its original settings before changing the schedule."), { code: "research-schedule-outcome-unresolved" });
+        }
+        if (!attempt || attempt.state === "rejected") {
+          const workspace = deps.missionWorkspacePath(id);
+          const [checkpointFingerprint, checkpoint] = await Promise.all([
+            deps.fingerprintMission(id), deps.readAutomationCheckpoint(id),
+          ]);
+          attempt = {
+            generation: (attempt?.generation ?? 0) + 1, state: "pending", request,
+            input: {
+              ...requested, name: `Research: ${mission.title}`, prompt: automationPrompt(mission, workspace),
+              cwds: [workspace], tags: ["research-mission", `research-mission:${mission.id}`], familiars: [mission.familiarId],
+              timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            },
+            checkpointFingerprint, ...(checkpoint.token ? { checkpointToken: checkpoint.token } : {}),
+          };
+          // Persist the exact payload before it can reach Coven. A failed save
+          // sends nothing; a lost reply reuses this body even after edits/restart.
+          await saveMission({ ...mission, automationScheduleAttempt: attempt });
+        }
+        let created: ResearchAutomationRecord;
+        try {
+          created = await deps.createAutomation(attempt.input, {
+            missionId: mission.id, automationId: `research-${mission.id}`,
+            adoptionKey: `research-create:${mission.id}:${attempt.generation}`,
+          });
+        } catch (error) {
+          if (error && typeof error === "object" && "definitiveRejection" in error && error.definitiveRejection === true) {
+            await saveMission({ ...mission, automationScheduleAttempt: { ...attempt, state: "rejected" } });
+          }
+          throw error;
+        }
+        if (created.id !== `research-${mission.id}` || created.status !== "PAUSED" || !Number.isSafeInteger(created.revision) || created.revision! < 1) {
+          throw Object.assign(new Error("Coven has not confirmed the paused Research schedule. Retry the original request."), { code: "research-schedule-unconfirmed" });
+        }
         const updated: ResearchMission = {
           ...mission,
+          automationScheduleAttempt: undefined,
           automationId: created.id,
           automation: {
             id: created.id,
-            rrule,
+            revision: created.revision,
+            rrule: created.rrule ?? rrule,
             status: "PAUSED",
-            checkpointFingerprint,
-            ...(checkpoint.token ? { checkpointToken: checkpoint.token } : {}),
+            checkpointFingerprint: attempt.checkpointFingerprint,
+            ...(attempt.checkpointToken ? { checkpointToken: attempt.checkpointToken } : {}),
           },
           updatedAt: deps.now().toISOString(),
         };
@@ -2400,17 +2460,17 @@ export function makeProductionResearchMissionRunner() {
           : undefined,
       );
     },
-    createAutomation: async (input) => {
+    createAutomation: async (input, context) => {
       const { createCodexAutomation } = await import("@opencoven/research-host/lib/codex-automations");
-      return createCodexAutomation(input);
+      return createCodexAutomation(input, context);
     },
     getAutomation: async (id) => {
       const { getCodexAutomation } = await import("@opencoven/research-host/lib/codex-automations");
       return getCodexAutomation(id);
     },
-    updateAutomation: async (id, patch) => {
+    updateAutomation: async (id, patch, context) => {
       const { updateCodexAutomation } = await import("@opencoven/research-host/lib/codex-automations");
-      return updateCodexAutomation(id, patch);
+      return updateCodexAutomation(id, patch, context);
     },
     latestAutomationRun: async (id) => {
       const { listRoutineRuns } = await import("@opencoven/research-host/lib/server/coven-automations-client");

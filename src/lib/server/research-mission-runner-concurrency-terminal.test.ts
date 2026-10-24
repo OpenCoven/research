@@ -82,7 +82,7 @@ function deps(overrides: Partial<ResearchMissionRunnerDeps> = {}): ResearchMissi
       status: patch.status ?? "PAUSED",
       rrule: null,
     }),
-    getAutomation: async () => null,
+    getAutomation: async (id) => ({ id, status: "ACTIVE", rrule: null, revision: 1 }),
     latestAutomationRun: async () => null,
     readAutomationTranscript: async () => "",
     readAutomationCheckpoint: async () => ({ transcript: "", token: "", at: NOW.toISOString() }),

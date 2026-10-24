@@ -1,6 +1,6 @@
 import { researchRouteLoaders } from './route-registry.ts';
 
-export const researchHostContractVersion = 1;
+export const researchHostContractVersion = 2;
 export type ResearchHttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'HEAD' | 'OPTIONS';
 type ResearchRoute = Partial<Record<ResearchHttpMethod, (request: Request, context: never) => Response | Promise<Response>>>;
 
