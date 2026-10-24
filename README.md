@@ -69,6 +69,8 @@ Track delivery in [Cave issue #5997](https://github.com/OpenCoven/coven-cave/iss
 
 ## Release contract
 
+Research is distributed only as a package consumed by Cave. It has no standalone Vercel application or deployment; package CI verifies its host contract and release artifact.
+
 Releases use a signed `v<package version>` tag on a commit merged into `main`.
 The release workflow reruns build, boundary, type, Node, and component checks
 against the immutable Cave fixture before publishing a tarball and SHA256SUMS.
